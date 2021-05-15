@@ -22,10 +22,10 @@ class NotionApiClient {
   }
 
   def user(userId: String): User = {
-    get[User](NotionApiUri.user(userId))
+    get[User](NotionApiUri.User.user(userId))
   }
 
   def listAllUsers: ListAllUsers = {
-    get[ListAllUsers](NotionApiUri.listAllUsers)
+    get[ListAllUsers](NotionApiUri.User.listAllUsers)
   }
 }
