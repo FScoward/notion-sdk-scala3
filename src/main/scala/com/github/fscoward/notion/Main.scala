@@ -4,5 +4,5 @@ import sttp.client3._
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
 @main def hello: Unit =
-  val httpClient = new HttpClient()
+  val httpClient = new NotionApiClient()
   println(httpClient.listAllUsers)
