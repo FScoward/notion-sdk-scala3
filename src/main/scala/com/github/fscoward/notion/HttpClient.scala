@@ -11,13 +11,21 @@ class HttpClient extends Client {
     "Notion-Version" -> "2021-05-13"
   )
 
-  def listAllUsers: ListAllUsers = {
+  def get[R](uri: String)(implicit m: io.circe.Decoder[R]): R = {
     val request = basicRequest
       .headers(headers)
-      .get(uri"${NotionApi.listAllUsers}")
-      .response(asJson[ListAllUsers].getRight)
+      .get(uri"${uri}")
+      .response(asJson[R].getRight)
     val backend = HttpURLConnectionBackend()
     val response = request.send(backend)
     response.body
+  }
+  
+  def user(userId: String): User = {
+    get[User](NotionApi.user(userId))
+  }
+
+  def listAllUsers: ListAllUsers = {
+    get[ListAllUsers](NotionApi.listAllUsers)
   }
 }

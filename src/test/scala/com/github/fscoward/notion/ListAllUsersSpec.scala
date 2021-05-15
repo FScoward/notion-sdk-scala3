@@ -35,7 +35,7 @@ class ListAllUsersSpec extends munit.FunSuite {
     val expected = ListAllUsers(
       `object` = "list",
       results = Seq(
-        Content(
+        User(
           `object` = "user",
           id = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaaa",
           name = "XXXXXXXXXX",
@@ -43,7 +43,7 @@ class ListAllUsersSpec extends munit.FunSuite {
           `type` = "person",
           person = Some(Person("test@example.com"))
         ),
-        Content(
+        User(
           `object` = "user",
           id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxx",
           name = "testtest",

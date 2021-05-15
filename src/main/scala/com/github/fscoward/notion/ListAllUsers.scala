@@ -2,12 +2,12 @@ package com.github.fscoward.notion
 
 case class ListAllUsers(
     `object`: String,
-    results: Seq[Content],
+    results: Seq[User],
     next_cursor: Option[String] = None,
     has_more: Boolean
 )
 
-case class Content(
+case class User(
     `object`: String,
     id: String,
     name: String,
