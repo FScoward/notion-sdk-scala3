@@ -6,4 +6,7 @@ object NotionApiUri {
     val user = (userId: String) => s"$v1/users/$userId"
     val listAllUsers = s"$v1/users"
   }
+  object Page {
+    val page = (pageId: String) => s"$v1/pages/$pageId"
+  }
 }
