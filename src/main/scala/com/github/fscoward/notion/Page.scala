@@ -7,7 +7,7 @@ case class Page(
     id: String,
     created_time: String,
     last_edited_time: String,
-    properties: Json
+    properties: Map[String, Property]
 )
 
 trait Property
@@ -22,6 +22,8 @@ case class Selects (
 case class Number(
   value: Int
 ) extends Property
+
+case class Properties(properties: Map[String, Property])
 
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 import cats.syntax.functor._
@@ -41,18 +43,20 @@ implicit val decorder: Decoder[Page] = new Decoder[Page] {
       id <- c.downField("id").as[String]
       createdTime <- c.downField("created_time").as[String]
       lastEditedTime <- c.downField("last_edited_time").as[String]
-      properties <- c.downField("properties").as[Json]
     } yield {
     
+      val keys = c.downField("properties").keys.getOrElse(Nil)
+      println("*****************************")
+      val z = keys.map { key =>
+            val p = c.downField("properties").get[Property](key).toOption
+            (key, p)
+      }.filter(_._2.isDefined).foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
 
+      println(z)
       println("*****************************")
-      println(properties.hcursor.keys)
-      println(c.downField("properties").keys.map(_.map(key => c.downField("properties").get[Property](key).getOrElse(None))))
-      // println(c.downField("properties").get[Seq[Select]]("Store availability"))
-      println(c.downField("properties").get[Property]("Store availability"))
-      println(c.downField("properties").get[Property]("Price"))
-      println("*****************************")
-      Page(obj, id, createdTime, lastEditedTime, properties)
+      val page = Page(obj, id, createdTime, lastEditedTime, z)
+      println(page)
+      page
     }
   }
 }
