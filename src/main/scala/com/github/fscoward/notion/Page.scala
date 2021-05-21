@@ -44,19 +44,12 @@ implicit val decorder: Decoder[Page] = new Decoder[Page] {
       createdTime <- c.downField("created_time").as[String]
       lastEditedTime <- c.downField("last_edited_time").as[String]
     } yield {
-    
-      val keys = c.downField("properties").keys.getOrElse(Nil)
-      println("*****************************")
-      val z = keys.map { key =>
+      val keys: Iterable[String] = c.downField("properties").keys.getOrElse(Nil)
+      val properties: Map[String, Property] = keys.map { key =>
             val p = c.downField("properties").get[Property](key).toOption
             (key, p)
       }.filter(_._2.isDefined).foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
-
-      println(z)
-      println("*****************************")
-      val page = Page(obj, id, createdTime, lastEditedTime, z)
-      println(page)
-      page
+      Page(obj, id, createdTime, lastEditedTime, properties)
     }
   }
 }
