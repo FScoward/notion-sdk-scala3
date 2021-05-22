@@ -11,6 +11,7 @@ case class Page(
 )
 
 trait Property
+
 case class Select(
   name: String,
   color: String
@@ -23,6 +24,52 @@ case class Number(
   value: Int
 ) extends Property
 
+case class Bool(
+  value: Boolean
+) extends Property
+
+case class MultiSelect(
+  id: String,
+  name: String,
+  color: String
+) extends Property
+
+// trait RichText extends Property {
+//   val plain_text: String
+//   val href: Option[String]
+//   val annotations: NotionAnnotation
+//   val `type`: String // TODO: Enum
+// }
+
+trait RichText extends Property {
+  val plain_text: String
+  val href: Option[String]
+  val annotations: NotionAnnotation
+  val `type`: String // TODO: Enum
+}
+
+case class TextObject(
+  plain_text: String,
+  href: Option[String],
+  annotations: NotionAnnotation,
+  `type`: String, // TODO: Enum
+  content: String,
+  link: LinkObject
+) extends RichText
+
+case class LinkObject(
+  `type`: String = "url",
+  url: String
+)
+
+case class NotionAnnotation(
+  bold: Boolean,
+  italic: Boolean,
+  strikethrough: Boolean,
+  code: Boolean,
+  color: String // TODO: Enum
+)
+
 case class Properties(properties: Map[String, Property])
 
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
@@ -31,8 +78,11 @@ import io.circe.{ Decoder, Encoder }
 
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
+    Decoder[TextObject].widen,
     Decoder[Seq[Select]].widen.map(s => Selects(s)),
-    Decoder[Int].widen.map(Number)
+    Decoder[Int].widen.map(Number),
+    Decoder[MultiSelect].widen,
+    Decoder[Boolean].widen.map(Bool)
   ).reduceLeft(_ or _)
   
 
