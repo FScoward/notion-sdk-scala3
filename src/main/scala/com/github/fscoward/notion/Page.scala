@@ -45,13 +45,10 @@ implicit val decoder: Decoder[Page] = new Decoder[Page] {
       id <- c.downField("id").as[String]
       createdTime <- c.downField("created_time").as[String]
       lastEditedTime <- c.downField("last_edited_time").as[String]
-      propertyKeys <- c.get[Json]("properties").map(_.hcursor.keys.getOrElse(Nil))
+      property <- c.get[Json]("properties").map(_.hcursor)
     } yield {
-      val properties: Map[String, Property] = propertyKeys.map { key =>
-        val property = c.downField("properties").get[Property](key).toOption
-        (key, property)
-      }.filter(_._2.isDefined).foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
-      Page(obj, id, createdTime, lastEditedTime, properties)
+      println(decodeProperties(property))
+      Page(obj, id, createdTime, lastEditedTime, decodeProperties(property))
     }
   }
 }

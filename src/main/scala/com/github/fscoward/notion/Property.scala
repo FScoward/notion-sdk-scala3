@@ -1,6 +1,17 @@
 package com.github.fscoward.notion
 
+import io.circe.{Decoder, Encoder, HCursor, Json}
+
 trait Property
+
+def decodeProperties(properties: HCursor): Map[String, Property] = {
+  val keys = properties.keys.getOrElse(Nil)
+  keys.map { key =>
+    val property = properties.get[Property](key).toOption
+    (key, property)
+  }.filter(_._2.isDefined)
+  .foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
+}
 
 case class Select(
   name: String,
