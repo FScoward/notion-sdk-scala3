@@ -39,7 +39,7 @@ implicit val propertyDecoder: Decoder[Property] =
   ).reduceLeft(_ or _)
   
 
-implicit val decorder: Decoder[Page] = new Decoder[Page] {
+implicit val decoder: Decoder[Page] = new Decoder[Page] {
   def apply(c: HCursor): Decoder.Result[Page] = {
     for {
       obj <- c.downField("object").as[String]
