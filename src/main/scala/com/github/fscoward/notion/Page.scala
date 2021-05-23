@@ -33,9 +33,9 @@ implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
     Decoder[TextObject].widen,
     Decoder[Seq[Select]].widen.map(s => Selects(s)),
-    Decoder[Int].widen.map(Number),
+    Decoder[Int].widen.map(Number.apply),
     Decoder[MultiSelect].widen,
-    Decoder[Boolean].widen.map(Bool)
+    Decoder[Boolean].widen.map(Bool.apply)
   ).reduceLeft(_ or _)
   
 
