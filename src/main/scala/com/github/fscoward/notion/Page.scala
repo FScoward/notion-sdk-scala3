@@ -37,7 +37,6 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[MultiSelect].widen,
     Decoder[Boolean].widen.map(Bool.apply)
   ).reduceLeft(_ or _)
-  
 
 implicit val decoder: Decoder[Page] = new Decoder[Page] {
   def apply(c: HCursor): Decoder.Result[Page] = {
@@ -46,11 +45,11 @@ implicit val decoder: Decoder[Page] = new Decoder[Page] {
       id <- c.downField("id").as[String]
       createdTime <- c.downField("created_time").as[String]
       lastEditedTime <- c.downField("last_edited_time").as[String]
+      propertyKeys <- c.get[Json]("properties").map(_.hcursor.keys.getOrElse(Nil))
     } yield {
-      val keys: Iterable[String] = c.downField("properties").keys.getOrElse(Nil)
-      val properties: Map[String, Property] = keys.map { key =>
-            val p = c.downField("properties").get[Property](key).toOption
-            (key, p)
+      val properties: Map[String, Property] = propertyKeys.map { key =>
+        val property = c.downField("properties").get[Property](key).toOption
+        (key, property)
       }.filter(_._2.isDefined).foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
       Page(obj, id, createdTime, lastEditedTime, properties)
     }
