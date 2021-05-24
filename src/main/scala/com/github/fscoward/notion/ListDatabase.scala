@@ -22,7 +22,6 @@ implicit val databaseDecoder: Decoder[Database] = new Decoder[Database] {
       title <- c.downField("title").as[String]
       property <- c.get[Map[String, Property]]("properties")
     } yield {
-      println("#################################")
       Database(obj, id, title, property)
     }
   }
