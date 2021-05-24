@@ -20,9 +20,10 @@ implicit val databaseDecoder: Decoder[Database] = new Decoder[Database] {
       obj <- c.downField("object").as[String]
       id <- c.downField("id").as[String]
       title <- c.downField("title").as[String]
-      property <- c.get[Json]("properties").map(_.hcursor)
+      property <- c.get[Map[String, Property]]("properties")
     } yield {
-      Database(obj, id, title, decodeProperties(property))
+      println("#################################")
+      Database(obj, id, title, property)
     }
   }
 }

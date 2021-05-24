@@ -1,16 +1,46 @@
 package com.github.fscoward.notion
 
-import io.circe.{Decoder, Encoder, HCursor, Json}
+import io.circe.{Decoder, Encoder, HCursor, Json, ACursor}
+import io.circe.DecodingFailure
+import cats.data.Validated
 
 trait Property
 
-def decodeProperties(properties: HCursor): Map[String, Property] = {
-  val keys = properties.keys.getOrElse(Nil)
-  keys.map { key =>
-    val property = properties.get[Property](key).toOption
-    (key, property)
-  }.filter(_._2.isDefined)
-  .foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
+
+
+implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map[String, Property]]{ 
+
+  def decodeProperties(properties: HCursor): Map[String, Property] = {
+    val keys = properties.keys.getOrElse(Nil)
+    keys.map { key =>
+      val property = properties.get[Property](key).toOption
+      (key, property)
+    }.filter(_._2.isDefined)
+    .foldLeft(Map.empty[String, Property])((x,y) => x ++ Map(y._1 -> y._2.get))
+  }
+
+  def apply(c: HCursor): Decoder.Result[Map[String, Property]] = tryDecode(c)
+
+  override def tryDecode(c: ACursor): Decoder.Result[Map[String, Property]] = c match {
+    case hc: HCursor => 
+      Right(decodeProperties(hc))
+      // decoder(hc) match {
+      //   case Right(a) => Right(decodeProperties(hc))
+      //   case Left(df) => Left(df)
+      // }
+    case _ =>
+      Left(
+        DecodingFailure("Attempt to decode value on failed cursor", c.history)
+      )
+  }
+
+  override def tryDecodeAccumulating(c: ACursor): Decoder.AccumulatingResult[Map[String, Property]] = c match {
+    case hc: HCursor => decodeAccumulating(hc)
+    case _ =>
+      Validated.invalidNel(
+        DecodingFailure("Attempt to decode value on failed cursor", c.history)
+      )
+  }
 }
 
 case class Select(
