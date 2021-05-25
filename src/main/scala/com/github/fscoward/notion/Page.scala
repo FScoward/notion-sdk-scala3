@@ -2,6 +2,10 @@ package com.github.fscoward.notion
 
 import io.circe.{Decoder, Encoder, HCursor, Json}
 
+/**
+ * 
+ * @see https://developers.notion.com/reference/page
+*/
 case class Page(
     `object`: String,
     id: String,

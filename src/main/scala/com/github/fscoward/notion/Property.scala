@@ -10,14 +10,13 @@ trait Property
 
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
+    Decoder[Title].widen,
     Decoder[TextObject].widen,
-    Decoder[Seq[Select]].widen.map(s => Selects(s)),
     Decoder[Int].widen.map(Number.apply),
+    Decoder[Seq[Select]].widen.map(s => Selects(s)),
     Decoder[MultiSelect].widen,
     Decoder[Boolean].widen.map(Bool.apply),
-    Decoder[Title].widen
   ).reduceLeft(_ or _)
-
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map[String, Property]]{ 
 
@@ -62,7 +61,7 @@ case class Title(
 
 case class Select(
   name: String,
-  color: String
+  color: Color
 )
 case class Selects (
   value: Seq[Select]
@@ -79,8 +78,21 @@ case class Bool(
 case class MultiSelect(
   id: String,
   name: String,
-  color: String
+  color: Color
 ) extends Property
+
+enum Color:
+  case default,
+  gray,
+  brown,
+  red,
+  yellow,
+  green,
+  purple,
+  pink
+end Color
+
+implicit val decodeColor: Decoder[Color] = Decoder.decodeString.emapTry { str => scala.util.Try(Color.valueOf(str))}
 
 // trait RichText extends Property {
 //   val plain_text: String
