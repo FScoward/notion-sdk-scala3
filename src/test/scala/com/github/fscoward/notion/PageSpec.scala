@@ -83,10 +83,6 @@ class PageSpec extends munit.FunSuite {
 
     val expected = null
     val actual = decode[Page](resultJson)
-    actual match {
-      case Left(e)  => println(e)
-      case Right(r) => println(r)
-    }
     assert(actual.isRight)
     // TODO
     // asertEquals(actual, Right(expected))

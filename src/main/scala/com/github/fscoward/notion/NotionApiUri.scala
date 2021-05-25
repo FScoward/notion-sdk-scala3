@@ -9,4 +9,8 @@ object NotionApiUri {
   object Page {
     val page = (pageId: String) => s"$v1/pages/$pageId"
   }
+
+  object Database {
+    val listAlliDatabases = s"$v1/databases"
+  }
 }

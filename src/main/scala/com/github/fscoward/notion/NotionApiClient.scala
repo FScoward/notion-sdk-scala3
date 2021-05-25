@@ -28,4 +28,8 @@ class NotionApiClient {
   def listAllUsers: ListAllUsers = {
     get[ListAllUsers](NotionApiUri.User.listAllUsers)
   }
+
+  def listDatabases: ListDatabase = {
+    get[ListDatabase](NotionApiUri.Database.listAlliDatabases)
+  }
 }

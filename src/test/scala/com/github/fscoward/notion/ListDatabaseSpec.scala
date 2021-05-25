@@ -6,6 +6,7 @@ class ListDatabaseSpec extends munit.FunSuite {
   test("decode json") {
     val resultJson = """
     |{
+    |  "object": "list",
     |  "results": [
     |    {
     |      "object": "database",
@@ -46,7 +47,6 @@ class ListDatabaseSpec extends munit.FunSuite {
     val expected = ""
     val actual = decode[ListDatabase](resultJson)
 
-    println(actual)
     assert(actual.isRight)
     // TODO
     // assert(actual == expected)

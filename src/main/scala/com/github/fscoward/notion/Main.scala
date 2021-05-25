@@ -5,4 +5,4 @@ import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 
 @main def hello: Unit =
   val httpClient = new NotionApiClient()
-  println(httpClient.listAllUsers)
+  println(httpClient.listDatabases)

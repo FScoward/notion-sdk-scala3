@@ -3,9 +3,20 @@ package com.github.fscoward.notion
 import io.circe.{Decoder, Encoder, HCursor, Json, ACursor}
 import io.circe.DecodingFailure
 import cats.data.Validated
+import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+import cats.syntax.functor._
 
 trait Property
 
+implicit val propertyDecoder: Decoder[Property] =
+  List[Decoder[Property]](
+    Decoder[TextObject].widen,
+    Decoder[Seq[Select]].widen.map(s => Selects(s)),
+    Decoder[Int].widen.map(Number.apply),
+    Decoder[MultiSelect].widen,
+    Decoder[Boolean].widen.map(Bool.apply),
+    Decoder[Title].widen
+  ).reduceLeft(_ or _)
 
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map[String, Property]]{ 
