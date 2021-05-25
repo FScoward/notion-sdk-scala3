@@ -27,8 +27,6 @@ case class NotionAnnotation(
   color: String // TODO: Enum
 )
 
-case class Properties(properties: Map[String, Property])
-
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 import cats.syntax.functor._
 import io.circe.{ Decoder, Encoder }
