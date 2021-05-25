@@ -35,7 +35,8 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[Seq[Select]].widen.map(s => Selects(s)),
     Decoder[Int].widen.map(Number.apply),
     Decoder[MultiSelect].widen,
-    Decoder[Boolean].widen.map(Bool.apply)
+    Decoder[Boolean].widen.map(Bool.apply),
+    Decoder[Title].widen
   ).reduceLeft(_ or _)
 
 implicit val pageDecoder: Decoder[Page] = new Decoder[Page] {

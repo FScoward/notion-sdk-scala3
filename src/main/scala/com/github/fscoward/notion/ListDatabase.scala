@@ -13,7 +13,6 @@ case class Database(
     properties: Map[String, Property]
 )
 
-
 implicit val databaseDecoder: Decoder[Database] = new Decoder[Database] {
   def apply(c: HCursor): Decoder.Result[Database] = {
     for {

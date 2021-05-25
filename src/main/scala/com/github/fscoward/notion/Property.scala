@@ -45,8 +45,9 @@ implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map
 
 case class Title(
   `type`: String,
-  title: Option[RichText]
-)
+  id: Option[String],
+  title: Option[String]
+) extends Property
 
 case class Select(
   name: String,
