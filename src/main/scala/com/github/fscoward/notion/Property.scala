@@ -16,6 +16,7 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[Seq[Select]].widen.map(s => Selects(s)),
     Decoder[MultiSelect].widen,
     Decoder[Boolean].widen.map(Bool.apply),
+    Decoder[FileProperty].widen,
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map[String, Property]]{ 
@@ -56,13 +57,13 @@ implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map
 case class Title(
   `type`: String,
   id: Option[String],
-  title: Option[String]
+  title: Seq[TextObject]
 ) extends Property
 
 case class Select(
   name: String,
   color: Color
-)
+) extends Property
 case class Selects (
   value: Seq[Select]
 ) extends Property
@@ -113,7 +114,19 @@ case class TextObject(
   href: Option[String],
   annotations: NotionAnnotation,
   `type`: String, // TODO: Enum
-  content: String,
+  text: Text,
   link: LinkObject
 ) extends RichText
 
+case class Text(
+  content: String,
+  link: Option[LinkObject]
+)
+
+case class FileProperty(
+  id: String,
+  `type`: String = "files",
+  files: Seq[File]
+) extends Property
+
+case class File(name: String)

@@ -11,7 +11,8 @@ case class Page(
     id: String,
     created_time: String,
     last_edited_time: String,
-    properties: Map[String, Property]
+    archived: Option[Boolean] = None,
+    properties: Map[String, Property] = Map.empty[String, Property]
 )
 
 case class LinkObject(
@@ -38,9 +39,10 @@ implicit val pageDecoder: Decoder[Page] = new Decoder[Page] {
       id <- c.downField("id").as[String]
       createdTime <- c.downField("created_time").as[String]
       lastEditedTime <- c.downField("last_edited_time").as[String]
+      archived <- c.downField("archived").as[Option[Boolean]]
       property <- c.get[Map[String, Property]]("properties")
     } yield {
-      Page(obj, id, createdTime, lastEditedTime, property)
+      Page(obj, id, createdTime, lastEditedTime, archived, property)
     }
   }
 }
