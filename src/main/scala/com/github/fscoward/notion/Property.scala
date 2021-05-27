@@ -8,15 +8,22 @@ import cats.syntax.functor._
 
 trait Property
 
+case class PropertyValue(
+  `type`: String,
+  id: Option[String],
+  title: Option[Seq[TextObject]] = None,
+  files: Option[Seq[File]] = None
+) extends Property
+
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
-    Decoder[Title].widen,
+    Decoder[PropertyValue].widen,
     Decoder[TextObject].widen,
     Decoder[Int].widen.map(Number.apply),
+    Decoder[Select].widen,
     Decoder[Seq[Select]].widen.map(s => Selects(s)),
     Decoder[MultiSelect].widen,
     Decoder[Boolean].widen.map(Bool.apply),
-    Decoder[FileProperty].widen,
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map[String, Property]]{ 
@@ -53,12 +60,6 @@ implicit def propertiesDecoder: Decoder[Map[String, Property]] = new Decoder[Map
       )
   }
 }
-
-case class Title(
-  `type`: String,
-  id: Option[String],
-  title: Seq[TextObject]
-) extends Property
 
 case class Select(
   name: String,
@@ -122,11 +123,5 @@ case class Text(
   content: String,
   link: Option[LinkObject]
 )
-
-case class FileProperty(
-  id: String,
-  `type`: String = "files",
-  files: Seq[File]
-) extends Property
 
 case class File(name: String)

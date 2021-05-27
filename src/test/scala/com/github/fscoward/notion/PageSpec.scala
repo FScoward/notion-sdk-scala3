@@ -100,7 +100,17 @@ class PageSpec extends munit.FunSuite {
         "Food group" -> Select("🍎Fruit", Color.red),
         "Price" -> Number(2),
         "Cost of next trip" -> Number(2),
-        "Last ordered" -> null // TODO
+        "Last ordered" -> null, // TODO
+        "Meals" -> null, // TODO
+        "Number of meals" -> Number(2),
+        "Store availabbility" -> Selects(
+          Seq(
+            Select("Rainbow Grocery", Color.purple),
+            Select("Gus's Community Market", Color.green)
+          )
+        ),
+        "+1" -> null, // TODO
+        "Photos" -> null // TODO
       )
     )
     val actual = decode[Page](resultJson)
@@ -221,10 +231,10 @@ class PageSpec extends munit.FunSuite {
       last_edited_time = "2021-05-26T15:18:00.000Z",
       archived = Some(false),
       properties = Map(
-        "Property 1" -> FileProperty(
-          id = ":=<q",
+        "Property 1" -> PropertyValue(
           `type` = "files",
-          files = Seq(File("rrrrrrrrr.png"))
+          id = Some(":=<q"),
+          files = Some(Seq(File("rrrrrrrrr.png")))
         )
       )
     )
