@@ -8,7 +8,7 @@ import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 class NotionApiClient {
   val headers = Map(
     "Authorization" -> s"Bearer ${System.getenv("NOTION_INTEGRATION_TOKEN")}",
-    "Notion-Version" -> "2021-05-13"
+    "Notion-Version" -> "2021-08-16"
   )
 
   def get[R](uri: String)(implicit m: io.circe.Decoder[R]): R = {
