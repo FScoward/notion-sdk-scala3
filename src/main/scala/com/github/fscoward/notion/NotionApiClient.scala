@@ -4,6 +4,7 @@ import sttp.client3._
 import sttp.client3.circe._
 import sttp.model._
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+import com.github.fscoward.notion.users._
 
 class NotionApiClient {
   val headers = Map(
