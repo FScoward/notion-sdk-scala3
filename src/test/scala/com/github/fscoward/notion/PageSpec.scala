@@ -7,95 +7,164 @@ class PageSpec extends munit.FunSuite {
     val resultJson =
       """
         |{
-        |  "object": "page",
-        |  "id": "b55c9c91-384d-452b-81db-d1ef79372b75",
-        |  "created_time": "2020-03-17T19:10:04.968Z",
-        |  "last_edited_time": "2020-03-17T21:49:37.913Z",
-        |  "properties": {
-        |    "Name": [
-        |      {
-        |        "id": "some-property-id",
-        |        "text": "Avocado", 
-        |        "annotations": {
-        |          "formatting": [],
-        |          "color": "default",
-        |          "link": null
-        |        }, 
-        |        "inline_object": null
-        |      }
-        |    ],
-        |    "Description": [
-        |      {
-        |        "text": "Persea americana", 
-        |        "annotations": {
-        |          "formatting": [],
-        |          "color": "default",
-        |          "link": null
-        |        }, 
-        |        "inline_object": null
-        |      }
-        |    ],
-        |    "In stock": false,
-        |    "Food group": {
-        |      "name": "🍎Fruit",
-        |      "color": "red"
+        |    "object": "page",
+        |    "id": "a1712d54-53e4-4893-a69d-4d581cd2c845",
+        |    "created_time": "2021-04-27T20:38:19.437Z",
+        |    "last_edited_time": "2021-04-27T20:38:19.437Z",
+        |    "parent": {
+        |        "type": "database_id",
+        |        "database_id": "8e2c2b76-9e1d-47d2-87b9-ed3035d607ae"
         |    },
-        |    "Price": 2,
-        |    "Cost of next trip": 2,
-        |    "Last ordered": "2020-03-10",
-        |    "Meals": [
-        |      "a91e35b0-5c4e-4018-83e8-584988caee1c",
-        |      "f5051efa-a7d9-4075-97f3-8ce9af14b1a7"
-        |    ],
-        |    "Number of meals": 2,
-        |    "Store availability": [
-        |      {
-        |        "name": "Rainbow Grocery",
-        |        "color": "purple"
-        |      },
-        |      {
-        |        "name": "Gus's Community Market",
-        |        "color": "green"
-        |      }
-        |    ],
-        |    "+1": [
-        |      {
-        |        "object": "user",
-        |        "id": "01da9b00-e400-4959-91ce-af55307647e5",
-        |        "type": "person",
-        |        "name": "Avocado Lovelace",
-        |        "person": {
-        |          "email": "avo@example.org"
+        |    "archived": false,
+        |    "properties": {
+        |        "Type": {
+        |            "id": "/7eo",
+        |            "type": "select",
+        |            "select": {
+        |                "id": "f96d0d0a-5564-4a20-ab15-5f040d49759e",
+        |                "name": "Article",
+        |                "color": "default"
+        |            }
         |        },
-        |        "avatar_url": "https://secure.notion-static.com/e6a352a8-8381-44d0-a1dc-9ed80e62b53d.jpg"
-        |      }
-        |    ],
-        |    "Photos": [
-        |      {
-        |        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e6a352a8-8381-44d0-a1dc-9ed80e62b53d/avocado.jpg",
-        |        "name": "avocado",
-        |        "mime_type": "image/jpg"
-        |      }
-        |    ]
-        |  }
+        |        "Publisher": {
+        |            "id": ">$Pb",
+        |            "type": "select",
+        |            "select": {
+        |                "id": "c5ee409a-f307-4176-99ee-6e424fa89afa",
+        |                "name": "NYT",
+        |                "color": "default"
+        |            }
+        |        },
+        |        "Summary": {
+        |            "id": "?\\25",
+        |            "type": "text",
+        |            "text": [
+        |                {
+        |                    "type": "text",
+        |                    "text": {
+        |                        "content": "Some think chief ethics officers could help technology companies navigate political and social questions.",
+        |                        "link": null
+        |                    },
+        |                    "annotations": {
+        |                        "bold": false,
+        |                        "italic": false,
+        |                        "strikethrough": false,
+        |                        "underline": false,
+        |                        "code": false,
+        |                        "color": "default"
+        |                    },
+        |                    "plain_text": "Some think chief ethics officers could help technology companies navigate political and social questions.",
+        |                    "href": null
+        |                }
+        |            ]
+        |        },
+        |        "Publishing/Release Date": {
+        |            "id": "?ex+",
+        |            "type": "date",
+        |            "date": {
+        |                "start": "2018-10-21",
+        |                "end": null
+        |            }
+        |        },
+        |        "Link": {
+        |            "id": "VVMi",
+        |            "type": "url",
+        |            "url": "https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html"
+        |        },
+        |        "Read": {
+        |            "id": "_MWJ",
+        |            "type": "checkbox",
+        |            "checkbox": false
+        |        },
+        |        "Status": {
+        |            "id": "`zz5",
+        |            "type": "select",
+        |            "select": {
+        |                "id": "8c4a056e-6709-4dd1-ba58-d34d9480855a",
+        |                "name": "Ready to Start",
+        |                "color": "yellow"
+        |            }
+        |        },
+        |        "Author": {
+        |            "id": "qNw_",
+        |            "type": "multi_select",
+        |            "multi_select": [
+        |                {
+        |                    "id": "833e2c78-35ed-4601-badc-50c323341d76",
+        |                    "name": "Kara Swisher",
+        |                    "color": "default"
+        |                }
+        |            ]
+        |        },
+        |        "Name": {
+        |            "id": "title",
+        |            "type": "title",
+        |            "title": [
+        |                {
+        |                    "type": "text",
+        |                    "text": {
+        |                        "content": "Who Will Teach Silicon Valley to Be Ethical? ",
+        |                        "link": null
+        |                    },
+        |                    "annotations": {
+        |                        "bold": false,
+        |                        "italic": false,
+        |                        "strikethrough": false,
+        |                        "underline": false,
+        |                        "code": false,
+        |                        "color": "default"
+        |                    },
+        |                    "plain_text": "Who Will Teach Silicon Valley to Be Ethical? ",
+        |                    "href": null
+        |                }
+        |            ]
+        |        }
+        |    }
         |}
         |""".stripMargin
 
     val expected = Page(
       `object` = "page",
-      id = "b55c9c91-384d-452b-81db-d1ef79372b75",
-      created_time = "2020-03-17T19:10:04.968Z",
-      last_edited_time = "2020-03-17T21:49:37.913Z",
+      id = "a1712d54-53e4-4893-a69d-4d581cd2c845",
+      created_time = "2021-04-27T20:38:19.437Z",
+      last_edited_time = "2021-04-27T20:38:19.437Z",
+      archived = Some(false),
+      parent = Parent(database_id = "8e2c2b76-9e1d-47d2-87b9-ed3035d607ae"),
       properties = Map(
-        "Name" -> TextObject(
+        "Name" -> TitleObject(
           "Persea americana",
-          None,
+          Text("this is test", None),
           null,
           "text",
           null,
           null
         ),
-        "Description" -> null, // TODO
+        "Type" -> SelectProperty(
+          id = "/7eo",
+          select = SelectPropertyValue(
+            id = "f96d0d0a-5564-4a20-ab15-5f040d49759e",
+            name = "Article",
+            color = "default"
+          )
+        ),
+        "Publisher" -> SelectProperty(
+          id = ">$Pb",
+          select = SelectPropertyValue(
+            id = "c5ee409a-f307-4176-99ee-6e424fa89afa",
+            name = "NYT",
+            color = "default"
+          )
+        ),
+        // TODO
+
+        "Description" -> TextObject(
+          "Persea americana",
+          None,
+          null,
+          null,
+          null,
+          null
+        ), // TODO
         "In stock" -> Bool(false),
         "Food group" -> Select("🍎Fruit", Color.red),
         "Price" -> Number(2),
@@ -119,6 +188,7 @@ class PageSpec extends munit.FunSuite {
     assertEquals(actual, Right(expected))
   }
 
+  /*
   test("decode page json that parent is database") {
     val resultJson = """
     |{
@@ -243,4 +313,5 @@ class PageSpec extends munit.FunSuite {
     // TODO
     assertEquals(actual, Right(expected))
   }
+   */
 }
