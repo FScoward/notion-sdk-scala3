@@ -131,13 +131,25 @@ class PageSpec extends munit.FunSuite {
       archived = Some(false),
       parent = Parent(database_id = "8e2c2b76-9e1d-47d2-87b9-ed3035d607ae"),
       properties = Map(
-        "Name" -> TitleObject(
-          "Persea americana",
-          Text("this is test", None),
-          null,
-          "text",
-          null,
-          null
+        "Name" -> TitleProperty(
+          id = "title",
+          `type` = "title",
+          title = Seq(
+            TitlePropertyValue(
+              "title",
+              Text("title", None),
+              NotionAnnotation(
+                bold = false,
+                italic = false,
+                strikethrough = false,
+                code = false,
+                color = "default"
+              ),
+              "text",
+              None,
+              None
+            )
+          )
         ),
         "Type" -> SelectProperty(
           id = "/7eo",
@@ -155,31 +167,30 @@ class PageSpec extends munit.FunSuite {
             color = "default"
           )
         ),
-        // TODO
-
-        "Description" -> TextObject(
-          "Persea americana",
-          None,
-          null,
-          null,
-          null,
-          null
-        ), // TODO
-        "In stock" -> Bool(false),
-        "Food group" -> Select("🍎Fruit", Color.red),
-        "Price" -> Number(2),
-        "Cost of next trip" -> Number(2),
-        "Last ordered" -> null, // TODO
-        "Meals" -> null, // TODO
-        "Number of meals" -> Number(2),
-        "Store availabbility" -> Selects(
-          Seq(
-            Select("Rainbow Grocery", Color.purple),
-            Select("Gus's Community Market", Color.green)
+        "Summary" -> TextProperty(
+          id = "?\\25",
+          text = Seq(
+            TextPropertyValue(
+              `type` = "text",
+              text = TextObj(
+                content =
+                  "Some think chief ethics officers could help technology companies navigate political and social questions.",
+                link = None
+              ),
+              annotations = NotionAnnotation(
+                bold = false,
+                italic = false,
+                strikethrough = false,
+                code = false,
+                color = "dafault"
+              ),
+              plain_text =
+                "Some think chief ethics officers could help technology companies navigate political and social questions.",
+              href = None
+            )
           )
-        ),
-        "+1" -> null, // TODO
-        "Photos" -> null // TODO
+        )
+        // TODO
       )
     )
     val actual = decode[Page](resultJson)

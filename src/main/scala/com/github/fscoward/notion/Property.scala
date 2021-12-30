@@ -38,7 +38,7 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[SelectProperty].widen,
     textPropertyDecoder.widen,
     Decoder[PropertyValue].widen,
-    Decoder[Title].widen,
+    Decoder[TitleProperty].widen,
     Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
     Decoder[Int].widen.map(Number.apply),
     Decoder[Select].widen,
@@ -149,13 +149,13 @@ trait RichText extends Property {
   val `type`: String // TODO: Enum
 }
 
-case class Title(
+case class TitleProperty(
     id: String,
     `type`: String,
-    title: Seq[TitleObject]
+    title: Seq[TitlePropertyValue]
 ) extends Property
 
-case class TitleObject(
+case class TitlePropertyValue(
     `type`: String,
     text: Text,
     annotations: NotionAnnotation,
