@@ -1,6 +1,15 @@
 package com.github.fscoward.notion
 
-import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+import com.github.fscoward.notion.checkbox.CheckboxProperty
+import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
+import com.github.fscoward.notion.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
+import com.github.fscoward.notion.text.{TextProperty, TextPropertyValue}
+import com.github.fscoward.notion.url.URLProperty
+import io.circe.*
+import io.circe.generic.auto.*
+import io.circe.parser.*
+import io.circe.syntax.*
 
 class PageSpec extends munit.FunSuite {
   test("decode Json") {
@@ -162,7 +171,7 @@ class PageSpec extends munit.FunSuite {
             color = "default"
           )
         ),
-        "Publisher" -> SelectProperty(
+        "Publisher" -> select.SelectProperty(
           id = ">$Pb",
           select = SelectPropertyValue(
             id = "c5ee409a-f307-4176-99ee-6e424fa89afa",
@@ -212,7 +221,7 @@ class PageSpec extends munit.FunSuite {
           id = "_MWJ",
           checkbox = false
         ),
-        "Status" -> SelectProperty(
+        "Status" -> select.SelectProperty(
           id = "`zz5",
           select = SelectPropertyValue(
             id = "8c4a056e-6709-4dd1-ba58-d34d9480855a",

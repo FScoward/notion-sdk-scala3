@@ -1,8 +1,12 @@
 package com.github.fscoward.notion
 
-import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
-import cats.syntax.functor._
-import io.circe.{ Decoder, Encoder }
+import io.circe.*
+import io.circe.generic.auto.*
+import io.circe.parser.*
+import io.circe.syntax.*
+import cats.syntax.functor.*
+import com.github.fscoward.notion.property.Property
+import io.circe.{Decoder, Encoder}
 
 case class ListDatabase(results: Seq[Database])
 

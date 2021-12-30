@@ -1,5 +1,6 @@
 package com.github.fscoward.notion
 
+import com.github.fscoward.notion.property.Property
 import io.circe.{Decoder, Encoder, HCursor, Json}
 
 /** @see
@@ -14,12 +15,6 @@ case class Page(
     parent: Parent,
     properties: Map[String, Property] = Map.empty[String, Property]
 )
-
-case class URLProperty(
-    id: String,
-    `type`: String = "url",
-    url: String
-) extends Property
 
 case class NotionAnnotation(
     bold: Boolean,

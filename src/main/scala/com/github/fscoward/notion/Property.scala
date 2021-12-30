@@ -1,18 +1,19 @@
 package com.github.fscoward.notion
 
-import io.circe.{ACursor, Decoder, Encoder, HCursor, Json}
-import io.circe.DecodingFailure
 import cats.data.Validated
+import cats.syntax.functor.*
+import com.github.fscoward.notion.checkbox.CheckboxProperty
+import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
+import com.github.fscoward.notion.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
+import com.github.fscoward.notion.text.{TextProperty, TextPropertyValue}
+import com.github.fscoward.notion.url.URLProperty
 import io.circe.*
+import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
-import cats.syntax.functor.*
-import io.circe.Decoder.Result
-
-import java.util.PropertyPermission
-
-trait Property
 
 case class PropertyValue(
     `type`: String,
@@ -100,17 +101,6 @@ implicit def propertiesDecoder: Decoder[Map[String, Property]] =
     }
   }
 
-case class SelectPropertyValue(
-    id: String,
-    name: String,
-    color: String
-)
-case class SelectProperty(
-    id: String,
-    `type`: String = "select",
-    select: SelectPropertyValue
-) extends Property
-
 case class Select(
     name: String,
     color: Color
@@ -188,20 +178,6 @@ case class Text(
     link: Option[URLProperty]
 )
 
-case class TextProperty(
-    id: String,
-    `type`: String = "text",
-    text: Seq[TextPropertyValue]
-) extends Property
-
-case class TextPropertyValue(
-    `type`: String, // TODO: Enum
-    text: TextObj,
-    annotations: NotionAnnotation,
-    plain_text: String,
-    href: Option[String]
-)
-
 case class TextObj(
     content: String,
     link: Option[LinkObj]
@@ -211,29 +187,4 @@ case class LinkObj(
     url: String
 )
 
-case class DateProperty(
-    id: String,
-    `type`: String = "date",
-    date: DatePropertyValue
-) extends Property
-
-// https://developers.notion.com/reference/page#date-property-values
-case class DatePropertyValue(
-    start: String,
-    end: Option[String],
-    time_zone: Option[String]
-)
-
-case class CheckboxProperty(
-    id: String,
-    `type`: String = "checkbox",
-    checkbox: Boolean
-) extends Property
-
 case class File(name: String)
-
-case class MultiSelectProperty(
-    id: String,
-    `type`: String = "multi_select",
-    multi_select: Seq[SelectPropertyValue]
-) extends Property
