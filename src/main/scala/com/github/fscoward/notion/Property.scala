@@ -7,7 +7,11 @@ import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
 import com.github.fscoward.notion.multi_select.MultiSelectProperty
 import com.github.fscoward.notion.property.Property
 import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
-import com.github.fscoward.notion.text.{TextProperty, TextPropertyValue}
+import com.github.fscoward.notion.text.{
+  TextProperty,
+  TextPropertyValue,
+  textPropertyDecoder
+}
 import com.github.fscoward.notion.url.URLProperty
 import io.circe.*
 import io.circe.Decoder.Result
@@ -21,20 +25,6 @@ case class PropertyValue(
     title: Option[Seq[TextObject]] = None,
     files: Option[Seq[File]] = None
 ) extends Property
-
-// NOTE: 定義が深くなるせいか型が消えるのでこの書き方で避ける
-val textPropertyDecoder: Decoder[TextProperty] =
-  new Decoder[TextProperty] {
-    def apply(c: HCursor): Result[TextProperty] = {
-      for {
-        id <- c.downField("id").as[String]
-        `type` <- c.downField("type").as[String]
-        text <- c.downField("text").as[Seq[TextPropertyValue]]
-      } yield {
-        TextProperty(id, `type`, text)
-      }
-    }
-  }
 
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
