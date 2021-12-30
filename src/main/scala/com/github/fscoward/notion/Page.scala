@@ -15,17 +15,19 @@ case class Page(
     properties: Map[String, Property] = Map.empty[String, Property]
 )
 
-case class LinkObject(
+case class URLProperty(
+    id: String,
     `type`: String = "url",
     url: String
-)
+) extends Property
 
 case class NotionAnnotation(
     bold: Boolean,
     italic: Boolean,
     strikethrough: Boolean,
     code: Boolean,
-    color: String // TODO: Enum
+    color: String
+    // TODO: Enum
 )
 
 case class Parent(
@@ -48,8 +50,6 @@ implicit val pageDecoder: Decoder[Page] = new Decoder[Page] {
       parent <- c.downField("parent").as[Parent]
       property <- c.get[Map[String, Property]]("properties")
     } yield {
-      println(property.keys)
-      println(property("Summary"))
       Page(obj, id, createdTime, lastEditedTime, archived, parent, property)
     }
   }

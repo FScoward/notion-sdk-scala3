@@ -136,8 +136,11 @@ class PageSpec extends munit.FunSuite {
           `type` = "title",
           title = Seq(
             TitlePropertyValue(
-              "title",
-              Text("title", None),
+              `type` = "text",
+              text = Text(
+                content = "Who Will Teach Silicon Valley to Be Ethical? ",
+                link = None
+              ),
               NotionAnnotation(
                 bold = false,
                 italic = false,
@@ -145,7 +148,7 @@ class PageSpec extends munit.FunSuite {
                 code = false,
                 color = "default"
               ),
-              "text",
+              plain_text = "Who Will Teach Silicon Valley to Be Ethical? ",
               None,
               None
             )
@@ -182,15 +185,51 @@ class PageSpec extends munit.FunSuite {
                 italic = false,
                 strikethrough = false,
                 code = false,
-                color = "dafault"
+                color = "default"
               ),
               plain_text =
                 "Some think chief ethics officers could help technology companies navigate political and social questions.",
               href = None
             )
           )
+        ),
+        "Publishing/Release Date" -> DateProperty(
+          id = "?ex+",
+          `type` = "date",
+          DatePropertyValue(
+            start = "2018-10-21",
+            end = None,
+            time_zone = None
+          )
+        ),
+        "Link" -> URLProperty(
+          id = "VVMi",
+          `type` = "url",
+          url =
+            "https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html"
+        ),
+        "Read" -> CheckboxProperty(
+          id = "_MWJ",
+          checkbox = false
+        ),
+        "Status" -> SelectProperty(
+          id = "`zz5",
+          select = SelectPropertyValue(
+            id = "8c4a056e-6709-4dd1-ba58-d34d9480855a",
+            name = "Ready to Start",
+            color = "yellow"
+          )
+        ),
+        "Author" -> MultiSelectProperty(
+          id = "qNw_",
+          multi_select = Seq(
+            SelectPropertyValue(
+              id = "833e2c78-35ed-4601-badc-50c323341d76",
+              name = "Kara Swisher",
+              color = "default"
+            )
+          )
         )
-        // TODO
       )
     )
     val actual = decode[Page](resultJson)

@@ -10,6 +10,8 @@ import io.circe.syntax.*
 import cats.syntax.functor.*
 import io.circe.Decoder.Result
 
+import java.util.PropertyPermission
+
 trait Property
 
 case class PropertyValue(
@@ -37,6 +39,10 @@ implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
     Decoder[SelectProperty].widen,
     textPropertyDecoder.widen,
+    Decoder[DateProperty].widen,
+    Decoder[URLProperty].widen,
+    Decoder[CheckboxProperty].widen,
+    Decoder[MultiSelectProperty].widen,
     Decoder[PropertyValue].widen,
     Decoder[TitleProperty].widen,
     Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
@@ -156,7 +162,7 @@ case class TitleProperty(
 ) extends Property
 
 case class TitlePropertyValue(
-    `type`: String,
+    `type`: String = "text",
     text: Text,
     annotations: NotionAnnotation,
     plain_text: String,
@@ -170,7 +176,7 @@ case class TextObject(
     annotations: NotionAnnotation,
     `type`: String, // TODO: Enum
     text: Text,
-    link: LinkObject
+    link: URLProperty
 ) extends RichText
 
 case class TextObjects(
@@ -179,7 +185,7 @@ case class TextObjects(
 
 case class Text(
     content: String,
-    link: Option[LinkObject]
+    link: Option[URLProperty]
 )
 
 case class TextProperty(
@@ -205,4 +211,29 @@ case class LinkObj(
     url: String
 )
 
+case class DateProperty(
+    id: String,
+    `type`: String = "date",
+    date: DatePropertyValue
+) extends Property
+
+// https://developers.notion.com/reference/page#date-property-values
+case class DatePropertyValue(
+    start: String,
+    end: Option[String],
+    time_zone: Option[String]
+)
+
+case class CheckboxProperty(
+    id: String,
+    `type`: String = "checkbox",
+    checkbox: Boolean
+) extends Property
+
 case class File(name: String)
+
+case class MultiSelectProperty(
+    id: String,
+    `type`: String = "multi_select",
+    multi_select: Seq[SelectPropertyValue]
+) extends Property
