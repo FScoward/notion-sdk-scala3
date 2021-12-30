@@ -33,4 +33,35 @@ class NotionApiClient {
   def listDatabases: ListDatabase = {
     get[ListDatabase](NotionApiUri.Database.listAlliDatabases)
   }
+
+  def post(uri: String, body: String) = {
+    val request = basicRequest
+      .headers(headers ++ Map("Content-Type" -> "application/json"))
+      .post(uri"${uri}")
+      .body(body)
+    val backend = HttpURLConnectionBackend()
+    val response = request.send(backend)
+    response
+  }
+  def createPage(parentDatabaseId: String, properties: Map[String, String]) = {
+    val body = s"""
+      |{
+      |  "parent": {
+      |     "database_id": "${parentDatabaseId}"
+      |  },
+      |  "properties": {
+      |   "Name": {
+      |			"title": [
+      |				{
+      |					"text": {
+      |						"content": "Tuscan Kale"
+      |					}
+      |				}
+      |			]
+      |		}
+      | }
+      |}
+      |""".stripMargin
+    post(NotionApiUri.Page.pages, body)
+  }
 }

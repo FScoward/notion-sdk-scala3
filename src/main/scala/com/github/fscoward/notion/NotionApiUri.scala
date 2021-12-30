@@ -8,6 +8,7 @@ object NotionApiUri {
   }
   object Page {
     val page = (pageId: String) => s"$v1/pages/$pageId"
+    val pages = s"$v1/pages"
   }
 
   object Database {
