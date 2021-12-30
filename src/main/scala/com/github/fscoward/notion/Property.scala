@@ -34,14 +34,14 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[URLProperty].widen,
     Decoder[CheckboxProperty].widen,
     Decoder[MultiSelectProperty].widen,
-    Decoder[PropertyValue].widen,
-    Decoder[TitleProperty].widen,
-    Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
-    Decoder[Int].widen.map(Number.apply),
-    Decoder[Select].widen,
-    Decoder[Seq[Select]].widen.map(s => Selects(s)),
-    Decoder[MultiSelect].widen,
-    Decoder[Boolean].widen.map(Bool.apply)
+    Decoder[TitleProperty].widen
+//    Decoder[PropertyValue].widen,
+//    Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
+//    Decoder[Int].widen.map(Number.apply),
+//    Decoder[Select].widen,
+//    Decoder[Seq[Select]].widen.map(s => Selects(s)),
+//    Decoder[MultiSelect].widen,
+//    Decoder[Boolean].widen.map(Bool.apply)
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] =
