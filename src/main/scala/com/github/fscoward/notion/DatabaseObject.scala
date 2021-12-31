@@ -2,17 +2,10 @@ package com.github.fscoward.notion
 
 import cats.data.Validated
 import cats.syntax.functor.*
-import com.github.fscoward.notion.checkbox.CheckboxProperty
-import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
-import com.github.fscoward.notion.multi_select.MultiSelectProperty
-import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
-import com.github.fscoward.notion.text.{
-  TextProperty,
-  TextPropertyValue,
-  textPropertyDecoder
-}
-import com.github.fscoward.notion.url.URLProperty
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
+import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.pages.property.*
+import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.*
 import io.circe.Decoder.Result
 import io.circe.generic.auto.*

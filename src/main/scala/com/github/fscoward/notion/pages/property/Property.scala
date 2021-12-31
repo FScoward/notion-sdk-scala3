@@ -1,27 +1,24 @@
-package com.github.fscoward.notion
+package com.github.fscoward.notion.pages.property
 
 import cats.data.Validated
 import cats.syntax.functor.*
-import com.github.fscoward.notion.checkbox.CheckboxProperty
-import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
-import com.github.fscoward.notion.multi_select.MultiSelectProperty
-import com.github.fscoward.notion.property.Property
-import com.github.fscoward.notion.select.{
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
+import com.github.fscoward.notion.pages.date.DateProperty
+import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.pages.select.{
   SelectOptionsProperty,
-  SelectProperty,
-  SelectPropertyValue
+  SelectProperty
 }
-import com.github.fscoward.notion.text.{
-  TextProperty,
-  TextPropertyValue,
-  textPropertyDecoder
-}
-import com.github.fscoward.notion.url.URLProperty
+import com.github.fscoward.notion.pages.text.*
+import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.*
 import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
+
+trait Property
 
 case class PropertyValue(
     `type`: String,
@@ -40,13 +37,13 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[CheckboxProperty].widen,
     Decoder[MultiSelectProperty].widen,
     Decoder[TitleProperty].widen
-//    Decoder[PropertyValue].widen
-//    Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
-//    Decoder[Int].widen.map(Number.apply),
-//    Decoder[Select].widen,
-//    Decoder[Seq[Select]].widen.map(s => Selects(s)),
-//    Decoder[MultiSelect].widen,
-//    Decoder[Boolean].widen.map(Bool.apply)
+    //    Decoder[PropertyValue].widen
+    //    Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
+    //    Decoder[Int].widen.map(Number.apply),
+    //    Decoder[Select].widen,
+    //    Decoder[Seq[Select]].widen.map(s => Selects(s)),
+    //    Decoder[MultiSelect].widen,
+    //    Decoder[Boolean].widen.map(Bool.apply)
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] =

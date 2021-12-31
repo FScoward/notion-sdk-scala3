@@ -1,6 +1,6 @@
-package com.github.fscoward.notion.date
+package com.github.fscoward.notion.pages.date
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.Property
 
 case class DateProperty(
     id: String,

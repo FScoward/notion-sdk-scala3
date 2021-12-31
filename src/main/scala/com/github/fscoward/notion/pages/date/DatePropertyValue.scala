@@ -1,7 +1,7 @@
-package com.github.fscoward.notion.date
+package com.github.fscoward.notion.pages.date
 
-import com.github.fscoward.notion.property.Property
-import com.github.fscoward.notion.select.SelectPropertyValue
+import com.github.fscoward.notion.pages.property.Property
+import com.github.fscoward.notion.pages.select.SelectPropertyValue
 
 // https://developers.notion.com/reference/page#date-property-values
 case class DatePropertyValue(

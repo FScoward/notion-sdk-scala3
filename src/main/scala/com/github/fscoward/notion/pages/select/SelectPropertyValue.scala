@@ -1,4 +1,4 @@
-package com.github.fscoward.notion.select
+package com.github.fscoward.notion.pages.select
 
 case class SelectPropertyValue(
     id: String,

@@ -1,6 +1,6 @@
 package com.github.fscoward.notion
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.*
 import io.circe.{Decoder, Encoder, HCursor, Json}
 
 /** @see
@@ -14,15 +14,6 @@ case class Page(
     archived: Option[Boolean] = None,
     parent: Parent,
     properties: Map[String, Property] = Map.empty[String, Property]
-)
-
-case class NotionAnnotation(
-    bold: Boolean,
-    italic: Boolean,
-    strikethrough: Boolean,
-    code: Boolean,
-    color: String
-    // TODO: Enum
 )
 
 case class Parent(

@@ -1,6 +1,8 @@
 package com.github.fscoward.notion
 
-import com.github.fscoward.notion.select.{
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.property.{Text, TitlePropertyValue}
+import com.github.fscoward.notion.pages.select.{
   SelectOptions,
   SelectOptionsProperty,
   SelectPropertyValue

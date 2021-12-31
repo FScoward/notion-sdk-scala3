@@ -1,6 +1,6 @@
-package com.github.fscoward.notion.select
+package com.github.fscoward.notion.pages.select
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.Property
 
 case class SelectProperty(
     id: String,

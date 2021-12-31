@@ -1,11 +1,22 @@
 package com.github.fscoward.notion
 
-import com.github.fscoward.notion.checkbox.CheckboxProperty
-import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
-import com.github.fscoward.notion.multi_select.MultiSelectProperty
-import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
-import com.github.fscoward.notion.text.{TextProperty, TextPropertyValue}
-import com.github.fscoward.notion.url.URLProperty
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
+import com.github.fscoward.notion.pages.date.{DateProperty, DatePropertyValue}
+import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.pages.property.{
+  Text,
+  TextObj,
+  TitleProperty,
+  TitlePropertyValue
+}
+import com.github.fscoward.notion.pages.select
+import com.github.fscoward.notion.pages.select.{
+  SelectProperty,
+  SelectPropertyValue
+}
+import com.github.fscoward.notion.pages.text.{TextProperty, TextPropertyValue}
+import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
@@ -171,7 +182,7 @@ class PageSpec extends munit.FunSuite {
             color = "default"
           )
         ),
-        "Publisher" -> select.SelectProperty(
+        "Publisher" -> SelectProperty(
           id = ">$Pb",
           select = SelectPropertyValue(
             id = "c5ee409a-f307-4176-99ee-6e424fa89afa",

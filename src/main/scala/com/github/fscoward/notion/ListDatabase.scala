@@ -5,7 +5,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import cats.syntax.functor.*
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.*
 import io.circe.{Decoder, Encoder}
 
 case class ListDatabase(results: Seq[Database])
