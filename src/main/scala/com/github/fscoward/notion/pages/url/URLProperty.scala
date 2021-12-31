@@ -1,6 +1,6 @@
-package com.github.fscoward.notion.url
+package com.github.fscoward.notion.pages.url
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.Property
 
 case class URLProperty(
     id: String,

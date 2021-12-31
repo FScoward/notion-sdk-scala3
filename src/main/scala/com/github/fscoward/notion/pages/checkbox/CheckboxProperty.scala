@@ -1,6 +1,6 @@
-package com.github.fscoward.notion.checkbox
+package com.github.fscoward.notion.pages.checkbox
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.Property
 
 case class CheckboxProperty(
     id: String,

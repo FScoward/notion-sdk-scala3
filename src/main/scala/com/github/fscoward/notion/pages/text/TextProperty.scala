@@ -1,6 +1,6 @@
-package com.github.fscoward.notion.text
+package com.github.fscoward.notion.pages.text
 
-import com.github.fscoward.notion.property.Property
+import com.github.fscoward.notion.pages.property.Property
 import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.{Decoder, HCursor}

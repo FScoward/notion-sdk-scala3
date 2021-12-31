@@ -1,6 +1,7 @@
-package com.github.fscoward.notion.text
+package com.github.fscoward.notion.pages.text
 
-import com.github.fscoward.notion.{NotionAnnotation, TextObj}
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.property.TextObj
 
 case class TextPropertyValue(
     `type`: String, // TODO: Enum
