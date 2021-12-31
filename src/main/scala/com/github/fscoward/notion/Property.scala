@@ -6,7 +6,11 @@ import com.github.fscoward.notion.checkbox.CheckboxProperty
 import com.github.fscoward.notion.date.{DateProperty, DatePropertyValue}
 import com.github.fscoward.notion.multi_select.MultiSelectProperty
 import com.github.fscoward.notion.property.Property
-import com.github.fscoward.notion.select.{SelectProperty, SelectPropertyValue}
+import com.github.fscoward.notion.select.{
+  SelectOptionsProperty,
+  SelectProperty,
+  SelectPropertyValue
+}
 import com.github.fscoward.notion.text.{
   TextProperty,
   TextPropertyValue,
@@ -29,13 +33,14 @@ case class PropertyValue(
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
     Decoder[SelectProperty].widen,
+    Decoder[SelectOptionsProperty].widen,
     textPropertyDecoder.widen,
     Decoder[DateProperty].widen,
     Decoder[URLProperty].widen,
     Decoder[CheckboxProperty].widen,
     Decoder[MultiSelectProperty].widen,
     Decoder[TitleProperty].widen
-//    Decoder[PropertyValue].widen,
+//    Decoder[PropertyValue].widen
 //    Decoder[Seq[TextObject]].widen.map(s => TextObjects(s)),
 //    Decoder[Int].widen.map(Number.apply),
 //    Decoder[Select].widen,
