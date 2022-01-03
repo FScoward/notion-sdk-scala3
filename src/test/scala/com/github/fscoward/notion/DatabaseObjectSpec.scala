@@ -1,12 +1,8 @@
 package com.github.fscoward.notion
 
+import com.github.fscoward.notion.databases.*
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.property.{Text, TitlePropertyValue}
-import com.github.fscoward.notion.pages.select.{
-  SelectOptions,
-  SelectOptionsProperty,
-  SelectPropertyValue
-}
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
@@ -417,10 +413,111 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
+          ),
+          "Summary" -> TextProperty(
+            id = "?\\25"
+          ),
+          "Publishing/Release Date" -> DateProperty(
+            id = "?ex+"
+          ),
+          "Link" -> URLProperty(
+            id = "VVMi"
+          ),
+          "Read" -> CheckboxProperty(
+            id = "_MWJ",
+            `type` = "checkbox"
+          ),
+          "Status" -> SelectOptionsProperty(
+            id = "`zz5",
+            select = SelectOptions(
+              Seq(
+                SelectPropertyValue(
+                  id = "8c4a056e-6709-4dd1-ba58-d34d9480855a",
+                  name = "Ready to Start",
+                  color = "yellow"
+                ),
+                SelectPropertyValue(
+                  id = "5925ba22-0126-4b58-90c7-b8bbb2c3c895",
+                  name = "Reading",
+                  color = "red"
+                ),
+                SelectPropertyValue(
+                  id = "59aa9043-07b4-4bf4-8734-3164b13af44a",
+                  name = "Finished",
+                  color = "blue"
+                ),
+                SelectPropertyValue(
+                  id = "f961978d-02eb-4998-933a-33c2ec378564",
+                  name = "Listening",
+                  color = "red"
+                ),
+                SelectPropertyValue(
+                  id = "1d450853-b27a-45e2-979f-448aa1bd35de",
+                  name = "Watching",
+                  color = "red"
+                )
+              )
+            )
+          ),
+          "Author" ->
+            MultiSelectOptionsProperty(
+              id = "qNw_",
+              multi_select = MultiSelectOptions(
+                options = Seq(
+                  MultiSelectPropertyValue(
+                    id = "15592971-7b30-43d5-9406-2eb69b13fcae",
+                    name = "Spencer Greenberg",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "b80a988e-dccf-4f74-b764-6ca0e49ed1b8",
+                    name = "Seth Stephens-Davidowitz",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "0e71ee06-199d-46a4-834c-01084c8f76cb",
+                    name = "Andrew Russell",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "5807ec38-4879-4455-9f30-5352e90e8b79",
+                    name = "Lee Vinsel",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "4cf10a64-f3da-449c-8e04-ce6e338bbdbd",
+                    name = "Megan Greenwell",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "833e2c78-35ed-4601-badc-50c323341d76",
+                    name = "Kara Swisher",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "82e594e2-b1c5-4271-ac19-1a723a94a533",
+                    name = "Paul Romer",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "ae3a2cbe-1fc9-4376-be35-331628b34623",
+                    name = "Karen Swallow Prior",
+                    color = "default"
+                  ),
+                  MultiSelectPropertyValue(
+                    id = "da068e78-dfe2-4434-9fd7-b7450b3e5830",
+                    name = "Judith Shulevitz",
+                    color = "default"
+                  )
+                )
+              )
+            ),
+          "Name" -> TitleProperty(
+            id = "title"
           )
         )
       )
-//    assert(actual.isRight)
+    assert(actual.isRight)
     assertEquals(actual, Right(expected))
   }
 }
