@@ -22,6 +22,8 @@ class PagePropertySpec extends munit.FunSuite {
     case class TextPropertyValue(content: String) {
       val `type`: String = "text"
     }
+    case class SelectProperty(select: SelectPropertyValue) extends Property
+    case class SelectPropertyValue(name: String)
 
     implicit val encoder: Encoder[PageProperty] = new Encoder[PageProperty] {
       override def apply(a: PageProperty): Json = {
@@ -32,6 +34,8 @@ class PagePropertySpec extends munit.FunSuite {
                 (key, Json.obj((v.id, Json.arr(v.asJson))))
               case v: RitchTextProperty =>
                 (key, Json.obj((v.id, Json.arr(v.asJson))))
+              case v: SelectProperty =>
+                (key, v.asJson)
             }
           }.toSeq
         }
@@ -52,6 +56,9 @@ class PagePropertySpec extends munit.FunSuite {
           "Name" -> TitleProperty(TextPropertyValue("this is content")),
           "Description" -> RitchTextProperty(
             TextPropertyValue("A dark green leafy vegetable")
+          ),
+          "Food group" -> SelectProperty(
+            SelectPropertyValue("Vegetable")
           )
         )
       )
@@ -81,6 +88,11 @@ class PagePropertySpec extends munit.FunSuite {
          |          }
          |        }
          |      ]
+         |    },
+         |    "Food group" : {
+         |      "select" : {
+         |        "name" : "Vegetable"
+         |      }
          |    }
          |  }
          |}""".stripMargin
