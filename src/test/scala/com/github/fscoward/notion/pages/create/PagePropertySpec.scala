@@ -18,7 +18,8 @@ class PagePropertySpec extends munit.FunSuite {
           ),
           "Food group" -> SelectProperty(
             SelectPropertyValue("Vegetable")
-          )
+          ),
+          "Price" -> NumberProperty(2.5)
         )
       )
     )
@@ -52,6 +53,9 @@ class PagePropertySpec extends munit.FunSuite {
          |      "select" : {
          |        "name" : "Vegetable"
          |      }
+         |    },
+         |    "Price" : {
+         |      "number" : 2.5
          |    }
          |  }
          |}""".stripMargin
