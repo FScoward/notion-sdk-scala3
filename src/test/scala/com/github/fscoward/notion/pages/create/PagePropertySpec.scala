@@ -1,5 +1,10 @@
 package com.github.fscoward.notion.pages.create
 
+import com.github.fscoward.notion.pages.create.block.{
+  Children,
+  Heading2Object,
+  TextObject
+}
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
