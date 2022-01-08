@@ -11,9 +11,9 @@ trait BlockObject {
 }
 
 trait HeadingObject extends BlockObject {
-  val text: TextObject
+  val text: Seq[TextObject]
 }
-case class Heading2Object(text: TextObject) extends HeadingObject {
+case class Heading2Object(text: Seq[TextObject]) extends HeadingObject {
   val `type` = "heading_2"
 }
 
@@ -24,14 +24,15 @@ case class TextObject(content: String, link: Option[String] = None) {
 implicit val textObjectEncoder: Encoder[TextObject] = new Encoder[TextObject] {
   override def apply(a: TextObject): Json = {
     Json.obj(
+      ("type", Json.fromString(a.`type`)),
       (
         "text",
-        Json.arr(
-          Json.obj(
-            ("type", Json.fromString(a.`type`)),
-            ("text", Json.obj(("content", Json.fromString(a.content))))
+        Json
+          .obj(
+            ("content", Json.fromString(a.content)),
+            ("link", a.link.asJson)
           )
-        )
+          .dropNullValues
       )
     )
   }

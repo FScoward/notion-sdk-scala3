@@ -22,7 +22,7 @@ class PagePropertySpec extends munit.FunSuite {
           "Price" -> NumberProperty(2.5)
         )
       ),
-      Children(Seq(Heading2Object(TextObject("Lacinato kale"))))
+      Children(Seq(Heading2Object(Seq(TextObject("Lacinato kale")))))
     )
     val actual: Json = p.asJson
 

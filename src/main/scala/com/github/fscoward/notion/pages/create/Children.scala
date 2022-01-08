@@ -15,7 +15,7 @@ implicit val chidrenEncoder: Encoder[Children] = new Encoder[Children] {
           Json.obj(
             ("object", Json.fromString(h2.`object`)),
             ("type", Json.fromString(h2.`type`)),
-            (h2.`type`, h2.text.asJson)
+            (h2.`type`, h2.asJson)
           )
       }
     }): _*)
