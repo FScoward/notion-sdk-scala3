@@ -10,13 +10,6 @@ trait BlockObject {
   val `type`: String
 }
 
-trait HeadingObject extends BlockObject {
-  val text: Seq[TextObject]
-}
-case class Heading2Object(text: Seq[TextObject]) extends HeadingObject {
-  val `type` = "heading_2"
-}
-
 case class TextObject(content: String, link: Option[String] = None) {
   val `type`: String = "text"
 }
