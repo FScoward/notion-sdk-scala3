@@ -10,9 +10,11 @@ trait BlockObject {
   val `type`: String
 }
 
-case class TextObject(content: String, link: Option[String] = None) {
+case class TextObject(content: String, link: Option[URL] = None) {
   val `type`: String = "text"
 }
+
+case class URL(url: String)
 
 implicit val textObjectEncoder: Encoder[TextObject] = new Encoder[TextObject] {
   override def apply(a: TextObject): Json = {

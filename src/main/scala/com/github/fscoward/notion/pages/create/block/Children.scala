@@ -17,6 +17,12 @@ implicit val childrenEncoder: Encoder[Children] = new Encoder[Children] {
             ("type", Json.fromString(h2.`type`)),
             (h2.`type`, h2.asJson)
           )
+        case pageParagraph: ParagraphBlock =>
+          Json.obj(
+            ("object", Json.fromString(pageParagraph.`object`)),
+            ("type", Json.fromString(pageParagraph.`type`)),
+            (pageParagraph.`type`, pageParagraph.asJson)
+          )
       }
     }): _*)
   }

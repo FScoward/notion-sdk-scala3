@@ -3,7 +3,9 @@ package com.github.fscoward.notion.pages.create
 import com.github.fscoward.notion.pages.create.block.{
   Children,
   Heading2Object,
-  TextObject
+  ParagraphBlock,
+  TextObject,
+  URL
 }
 import io.circe.*
 import io.circe.generic.auto.*
@@ -27,7 +29,20 @@ class PagePropertySpec extends munit.FunSuite {
           "Price" -> NumberProperty(2.5)
         )
       ),
-      Children(Seq(Heading2Object(Seq(TextObject("Lacinato kale")))))
+      Children(
+        Seq(
+          Heading2Object(Seq(TextObject("Lacinato kale"))),
+          ParagraphBlock(
+            text = Seq(
+              TextObject(
+                content =
+                  "Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.",
+                link = Some(URL("https://en.wikipedia.org/wiki/Lacinato_kale"))
+              )
+            )
+          )
+        )
+      )
     )
     val actual: Json = p.asJson
 
@@ -74,6 +89,23 @@ class PagePropertySpec extends munit.FunSuite {
          |            "type" : "text",
          |            "text" : {
          |              "content" : "Lacinato kale"
+         |            }
+         |          }
+         |        ]
+         |      }
+         |    },
+         |    {
+         |      "object" : "block",
+         |      "type" : "paragraph",
+         |      "paragraph" : {
+         |        "text" : [
+         |          {
+         |            "type" : "text",
+         |            "text" : {
+         |              "content" : "Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.",
+         |              "link" : {
+         |                "url" : "https://en.wikipedia.org/wiki/Lacinato_kale"
+         |              }
          |            }
          |          }
          |        ]
