@@ -1,6 +1,6 @@
 package com.github.fscoward.notion.pages.create
 
-import com.github.fscoward.notion.pages.create.block.{Children, chidrenEncoder}
+import com.github.fscoward.notion.pages.create.block.{Children, childrenEncoder}
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
