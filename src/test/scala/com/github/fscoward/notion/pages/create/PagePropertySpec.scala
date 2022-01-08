@@ -21,7 +21,8 @@ class PagePropertySpec extends munit.FunSuite {
           ),
           "Price" -> NumberProperty(2.5)
         )
-      )
+      ),
+      Children(Seq(Heading2Object(TextObject("Lacinato kale"))))
     )
     val actual: Json = p.asJson
 
@@ -57,7 +58,23 @@ class PagePropertySpec extends munit.FunSuite {
          |    "Price" : {
          |      "number" : 2.5
          |    }
-         |  }
+         |  },
+         |  "children" : [
+         |    {
+         |      "object" : "block",
+         |      "type" : "heading_2",
+         |      "heading_2" : {
+         |        "text" : [
+         |          {
+         |            "type" : "text",
+         |            "text" : {
+         |              "content" : "Lacinato kale"
+         |            }
+         |          }
+         |        ]
+         |      }
+         |    }
+         |  ]
          |}""".stripMargin
 
     assertEquals(actual.toString, expected)

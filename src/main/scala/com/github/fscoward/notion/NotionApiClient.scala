@@ -51,27 +51,27 @@ class NotionApiClient {
     response
   }
   def createPage(parentDatabaseId: String, properties: Map[String, String]) = {
-    import com.github.fscoward.notion.pages.create
-    val request = create.PageProperty(
-      create.PageParent("7b1e0686274f4ae6b6373c2236b57080"),
-      create.Properties(
-        Map(
-          "Name" -> create.TitleProperty(
-            create.TextPropertyValue("this is content")
-          ),
-          "Description" -> create.RitchTextProperty(
-            create.TextPropertyValue("A dark green leafy vegetable")
-          ),
-          "Food group" -> create.SelectProperty(
-            create.SelectPropertyValue("Vegetable")
-          ),
-          "Price" -> create.NumberProperty(2.5)
-        )
-      )
-    )
-    import com.github.fscoward.notion.pages.create.encoder
-
-    val response = post(NotionApiUri.Page.pages, request.asJson.toString)
-    println(response)
+//    import com.github.fscoward.notion.pages.create
+//    val request = create.PageProperty(
+//      create.PageParent("7b1e0686274f4ae6b6373c2236b57080"),
+//      create.Properties(
+//        Map(
+//          "Name" -> create.TitleProperty(
+//            create.TextPropertyValue("this is content")
+//          ),
+//          "Description" -> create.RitchTextProperty(
+//            create.TextPropertyValue("A dark green leafy vegetable")
+//          ),
+//          "Food group" -> create.SelectProperty(
+//            create.SelectPropertyValue("Vegetable")
+//          ),
+//          "Price" -> create.NumberProperty(2.5)
+//        )
+//      )
+//    )
+//    import com.github.fscoward.notion.pages.create.encoder
+//
+//    val response = post(NotionApiUri.Page.pages, request.asJson.toString)
+//    println(response)
   }
 }

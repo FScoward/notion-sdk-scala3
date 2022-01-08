@@ -5,7 +5,11 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 
-case class PageProperty(parent: PageParent, properties: Properties)
+case class PageProperty(
+    parent: PageParent,
+    properties: Properties,
+    children: Children
+)
 
 implicit val encoder: Encoder[PageProperty] = new Encoder[PageProperty] {
   override def apply(a: PageProperty): Json = {
@@ -28,7 +32,8 @@ implicit val encoder: Encoder[PageProperty] = new Encoder[PageProperty] {
       (
         "properties",
         Json.obj(property: _*)
-      )
+      ),
+      ("children", a.children.asJson)
     )
   }
 }
