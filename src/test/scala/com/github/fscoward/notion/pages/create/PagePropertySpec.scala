@@ -26,7 +26,8 @@ class PagePropertySpec extends munit.FunSuite {
           "Food group" -> SelectProperty(
             SelectPropertyValue("Vegetable")
           ),
-          "Price" -> NumberProperty(2.5)
+          "Price" -> NumberProperty(2.5),
+          "Mail Address" -> EmailProperty("example1@example.com")
         )
       ),
       Children(
@@ -77,6 +78,9 @@ class PagePropertySpec extends munit.FunSuite {
          |    },
          |    "Price" : {
          |      "number" : 2.5
+         |    },
+         |    "Mail Address" : {
+         |      "email" : "example1@example.com"
          |    }
          |  },
          |  "children" : [
@@ -114,6 +118,6 @@ class PagePropertySpec extends munit.FunSuite {
          |  ]
          |}""".stripMargin
 
-    assertEquals(actual.toString, expected)
+    assertEquals(actual, parse(expected).getOrElse(Json.Null))
   }
 }
