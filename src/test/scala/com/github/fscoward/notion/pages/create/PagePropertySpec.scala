@@ -27,7 +27,10 @@ class PagePropertySpec extends munit.FunSuite {
             SelectPropertyValue("Vegetable")
           ),
           "Price" -> NumberProperty(2.5),
-          "Mail Address" -> EmailProperty("example1@example.com")
+          "Mail Address" -> EmailProperty("example1@example.com"),
+          "Multi Select" -> MultiSelectProperty(
+            Seq(MultiSelectPropertyValue("A"), MultiSelectPropertyValue("B"))
+          )
         )
       ),
       Children(
@@ -81,6 +84,16 @@ class PagePropertySpec extends munit.FunSuite {
          |    },
          |    "Mail Address" : {
          |      "email" : "example1@example.com"
+         |    },
+         |    "Multi Select": {
+         |      "multi_select": [
+         |        {
+         |          "name": "A"
+         |        },
+         |        {
+         |          "name": "B"
+         |        }
+         |      ]
          |    }
          |  },
          |  "children" : [

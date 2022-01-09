@@ -27,6 +27,8 @@ implicit val encoder: Encoder[PageProperty] = new Encoder[PageProperty] {
             (key, v.asJson)
           case v: EmailProperty =>
             (key, v.asJson)
+          case v: MultiSelectProperty =>
+            (key, v.asJson)
         }
       }.toSeq
     }
