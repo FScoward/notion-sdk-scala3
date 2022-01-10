@@ -8,8 +8,7 @@ class DatabasePropertySpec extends munit.FunSuite {
   test("create database property") {
     val actual = Database(
       parent = Parent("b24dcaf87a2140d0a1d85b393cd2019b"),
-      title =
-        Seq(TitleProperty(text = TitlePropertyValue("Grocery List", None)))
+      title = Seq(Title(text = TitleValue("Grocery List", None)))
     )
     val expected = """
 {
