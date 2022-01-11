@@ -16,8 +16,11 @@ case class Database(
 implicit val propertiesEncoder: Encoder[Map[String, Property]] =
   new Encoder[Map[String, Property]] {
     override def apply(a: Map[String, Property]): Json = {
-      val seq = a.map { case (key, value: TitleProperty) =>
-        (key, Json.obj((value.`type`, value.value.asJson)))
+      val seq = a.map {
+        case (key, value: TitleProperty) =>
+          (key, Json.obj((value.`type`, value.value.asJson)))
+        case (key, value: RichTextProperty) =>
+          (key, value.asJson)
       }.toSeq
       Json.fromFields(seq)
     }
