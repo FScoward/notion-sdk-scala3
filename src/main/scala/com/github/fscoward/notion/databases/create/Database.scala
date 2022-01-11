@@ -21,6 +21,8 @@ implicit val propertiesEncoder: Encoder[Map[String, Property]] =
           (key, Json.obj((value.`type`, value.value.asJson)))
         case (key, value: RichTextProperty) =>
           (key, value.asJson)
+        case (key, value: CheckboxProperty) =>
+          (key, value.asJson)
       }.toSeq
       Json.fromFields(seq)
     }

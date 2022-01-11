@@ -9,8 +9,11 @@ class DatabasePropertySpec extends munit.FunSuite {
     val actual = Database(
       parent = Parent("b24dcaf87a2140d0a1d85b393cd2019b"),
       title = Seq(Title(text = TitleValue("Grocery List", None))),
-      properties =
-        Map("Name" -> TitleProperty(), "Description" -> RichTextProperty())
+      properties = Map(
+        "Name" -> TitleProperty(),
+        "Description" -> RichTextProperty(),
+        "In stock" -> CheckboxProperty()
+      )
     )
     val expected = """
 {
@@ -33,6 +36,9 @@ class DatabasePropertySpec extends munit.FunSuite {
     },
     "Description": {
       "rich_text": {}
+    },
+    "In stock": {
+      "checkbox": {}
     }
   }
 }
