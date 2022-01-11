@@ -29,7 +29,7 @@ class DatabasePropertySpec extends munit.FunSuite {
    ],
    "properties": {
     "Name": {
-        "title": {}
+      "title": {}
     },
     "Description": {
       "rich_text": {}
