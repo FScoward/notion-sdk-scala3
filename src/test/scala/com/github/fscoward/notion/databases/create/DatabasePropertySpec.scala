@@ -12,7 +12,14 @@ class DatabasePropertySpec extends munit.FunSuite {
       properties = Map(
         "Name" -> TitleProperty(),
         "Description" -> RichTextProperty(),
-        "In stock" -> CheckboxProperty()
+        "In stock" -> CheckboxProperty(),
+        "Food group" -> SelectProperty(options =
+          Seq(
+            SelectPropertyValue("🥦Vegetable", "green"),
+            SelectPropertyValue("🍎Fruit", "red"),
+            SelectPropertyValue("💪Protein", "yellow")
+          )
+        )
       )
     )
     val expected = """
@@ -30,17 +37,41 @@ class DatabasePropertySpec extends munit.FunSuite {
          }
       }
    ],
-   "properties": {
-    "Name": {
-      "title": {}
-    },
-    "Description": {
-      "rich_text": {}
-    },
-    "In stock": {
-      "checkbox": {}
-    }
-  }
+   "properties":{
+      "Name":{
+         "title":{
+            
+         }
+      },
+      "Description":{
+         "rich_text":{
+            
+         }
+      },
+      "In stock":{
+         "checkbox":{
+            
+         }
+      },
+      "Food group":{
+         "select":{
+            "options":[
+               {
+                  "name":"🥦Vegetable",
+                  "color":"green"
+               },
+               {
+                  "name":"🍎Fruit",
+                  "color":"red"
+               },
+               {
+                  "name":"💪Protein",
+                  "color":"yellow"
+               }
+            ]
+         }
+      }
+   }
 }
       """
     assertEquals(actual.asJson, parse(expected).getOrElse(Json.Null))
