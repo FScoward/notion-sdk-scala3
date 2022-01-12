@@ -19,7 +19,8 @@ class DatabasePropertySpec extends munit.FunSuite {
             SelectPropertyValue("🍎Fruit", "red"),
             SelectPropertyValue("💪Protein", "yellow")
           )
-        )
+        ),
+        "Price" -> NumberProperty(Format("dollar"))
       )
     )
     val expected = """
@@ -70,6 +71,11 @@ class DatabasePropertySpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Price": {
+        "number": {
+          "format": "dollar"
+        }
       }
    }
 }
