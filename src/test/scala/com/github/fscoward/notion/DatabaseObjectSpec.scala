@@ -162,6 +162,13 @@ class DatabaseObjectSpec extends munit.FunSuite {
          "text":{
             
          }
+      },
+      "Publishing/Release Date":{
+         "id":"?ex+",
+         "type":"date",
+         "date":{
+            
+         }
       }
    }
 }
@@ -313,11 +320,11 @@ class DatabaseObjectSpec extends munit.FunSuite {
           ),
           "Summary" -> TextProperty(
             id = "?\\25"
-          )
-          /*
+          ),
           "Publishing/Release Date" -> DateProperty(
             id = "?ex+"
-          ),
+          )
+          /*
           "Link" -> URLProperty(
             id = "VVMi"
           ),
