@@ -107,6 +107,54 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Publisher":{
+         "id":">$Pb",
+         "type":"select",
+         "select":{
+            "options":[
+               {
+                  "id":"c5ee409a-f307-4176-99ee-6e424fa89afa",
+                  "name":"NYT",
+                  "color":"default"
+               },
+               {
+                  "id":"1b9b0c0c-17b0-4292-ad12-1364a51849de",
+                  "name":"Netflix",
+                  "color":"blue"
+               },
+               {
+                  "id":"f3533637-278f-4501-b394-d9753bf3c101",
+                  "name":"Indie",
+                  "color":"brown"
+               },
+               {
+                  "id":"e70d713c-4be4-4b40-a44d-fb413c8b9d7e",
+                  "name":"Bon Appetit",
+                  "color":"yellow"
+               },
+               {
+                  "id":"9c2bd667-0a10-4be4-a044-35a537a14ab9",
+                  "name":"Franklin Institute",
+                  "color":"pink"
+               },
+               {
+                  "id":"6849b5f0-e641-4ec5-83cb-1ffe23011060",
+                  "name":"Springer",
+                  "color":"orange"
+               },
+               {
+                  "id":"6a5bff63-a72d-4464-a5d0-1a601af2adf6",
+                  "name":"Emerald Group",
+                  "color":"gray"
+               },
+               {
+                  "id":"01f82d08-aa1f-4884-a4e0-3bc32f909ec4",
+                  "name":"The Atlantic",
+                  "color":"red"
+               }
+            ]
+         }
       }
    }
 }
@@ -207,8 +255,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          )
-          /*
+          ),
           "Publisher" -> SelectOptionsProperty(
             id = ">$Pb",
             `type` = "select",
@@ -257,6 +304,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
               )
             )
           )
+          /*
           "Summary" -> TextProperty(
             id = "?\\25"
           ),
