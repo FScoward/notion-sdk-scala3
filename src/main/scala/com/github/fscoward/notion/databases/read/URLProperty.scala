@@ -1,4 +1,4 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
 case class URLProperty(
     id: String,

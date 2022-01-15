@@ -1,5 +1,6 @@
 package com.github.fscoward.notion.databases
 
+import com.github.fscoward.notion.databases.read.Property
 import com.github.fscoward.notion.pages.property.TitlePropertyValue
 
 case class DatabaseObject(

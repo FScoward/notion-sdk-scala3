@@ -1,9 +1,10 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
 import io.circe.Decoder
 import io.circe.generic.auto.*
 
 private val checkbox = "checkbox"
+
 case class CheckboxProperty(
     id: String,
     `type`: String,

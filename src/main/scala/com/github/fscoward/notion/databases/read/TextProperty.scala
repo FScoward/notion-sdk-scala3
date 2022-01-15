@@ -1,7 +1,7 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
 import io.circe.Decoder
-import io.circe.generic.auto._
+import io.circe.generic.auto.*
 
 private val text = "text"
 case class TextProperty(

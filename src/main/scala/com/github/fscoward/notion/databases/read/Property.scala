@@ -1,4 +1,4 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
 import cats.data.Validated
 import io.circe.{ACursor, Decoder, DecodingFailure, HCursor}
@@ -8,6 +8,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import cats.syntax.functor.*
+import com.github.fscoward.notion.databases.read.*
 
 trait Property
 

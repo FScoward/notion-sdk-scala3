@@ -1,6 +1,6 @@
 package com.github.fscoward.notion
 
-import com.github.fscoward.notion.databases.TitleProperty
+import com.github.fscoward.notion.databases.read.TitleProperty
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.property.TextObj
 import com.github.fscoward.notion.pages.text.TextPropertyValue
