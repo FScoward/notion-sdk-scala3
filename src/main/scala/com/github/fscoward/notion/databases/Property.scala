@@ -8,7 +8,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import cats.syntax.functor.*
-import com.github.fscoward.notion.databases.read.URLProperty
+import com.github.fscoward.notion.databases.read.*
 
 trait Property
 
