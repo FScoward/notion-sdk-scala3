@@ -13,5 +13,6 @@ object NotionApiUri {
 
   object Database {
     val listAlliDatabases = s"$v1/databases"
+    val create = s"$v1/databases"
   }
 }

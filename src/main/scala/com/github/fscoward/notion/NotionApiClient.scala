@@ -50,6 +50,15 @@ class NotionApiClient {
     val response = request.send(backend)
     response
   }
+
+  def createDatabase(
+      database: com.github.fscoward.notion.databases.create.Database
+  ) = {
+    import com.github.fscoward.notion.databases.create.propertiesEncoder
+    val response = post(NotionApiUri.Database.create, database.asJson.toString)
+    response
+  }
+
   def createPage(parentDatabaseId: String, properties: Map[String, String]) = {
 //    import com.github.fscoward.notion.pages.create
 //    val request = create.PageProperty(
