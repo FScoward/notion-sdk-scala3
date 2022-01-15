@@ -1,3 +1,5 @@
+[![Scala CI](https://github.com/FScoward/notion-sdk-scala3/actions/workflows/scala.yml/badge.svg?branch=main)](https://github.com/FScoward/notion-sdk-scala3/actions/workflows/scala.yml)
+
 ## sbt project compiled with Scala 3
 
 ### Usage
