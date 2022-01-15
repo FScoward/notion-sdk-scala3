@@ -4,7 +4,7 @@ import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.{Decoder, DecodingFailure, HCursor, ACursor}
 
-private val `type` = "select"
+private val `type`: String = "select"
 case class SelectOptionsProperty(
     id: String,
     `type`: String = `type`,
@@ -23,6 +23,6 @@ case class SelectPropertyValue(
 
 val selectOptionsPropertyDecoder: Decoder[SelectOptionsProperty] =
   Decoder[SelectOptionsProperty].ensure(
-    _.`type` == `type`,
+    pred => pred.`type` == `type`,
     s"type is not ${`type`}"
   )

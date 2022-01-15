@@ -69,92 +69,6 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
-      },
-      "Type":{
-         "id":"/7eo",
-         "type":"select",
-         "select":{
-            "options":[
-               {
-                  "id":"f96d0d0a-5564-4a20-ab15-5f040d49759e",
-                  "name":"Article",
-                  "color":"default"
-               },
-               {
-                  "id":"4ac85597-5db1-4e0a-9c02-445575c38f76",
-                  "name":"TV Series",
-                  "color":"default"
-               },
-               {
-                  "id":"2991748a-5745-4c3b-9c9b-2d6846a6fa1f",
-                  "name":"Film",
-                  "color":"default"
-               },
-               {
-                  "id":"82f3bace-be25-410d-87fe-561c9c22492f",
-                  "name":"Podcast",
-                  "color":"default"
-               },
-               {
-                  "id":"861f1076-1cc4-429a-a781-54947d727a4a",
-                  "name":"Academic Journal",
-                  "color":"default"
-               },
-               {
-                  "id":"9cc30548-59d6-4cd3-94bc-d234081525c4",
-                  "name":"Essay Resource",
-                  "color":"default"
-               }
-            ]
-         }
-      },
-      "Publisher":{
-         "id":">$Pb",
-         "type":"select",
-         "select":{
-            "options":[
-               {
-                  "id":"c5ee409a-f307-4176-99ee-6e424fa89afa",
-                  "name":"NYT",
-                  "color":"default"
-               },
-               {
-                  "id":"1b9b0c0c-17b0-4292-ad12-1364a51849de",
-                  "name":"Netflix",
-                  "color":"blue"
-               },
-               {
-                  "id":"f3533637-278f-4501-b394-d9753bf3c101",
-                  "name":"Indie",
-                  "color":"brown"
-               },
-               {
-                  "id":"e70d713c-4be4-4b40-a44d-fb413c8b9d7e",
-                  "name":"Bon Appetit",
-                  "color":"yellow"
-               },
-               {
-                  "id":"9c2bd667-0a10-4be4-a044-35a537a14ab9",
-                  "name":"Franklin Institute",
-                  "color":"pink"
-               },
-               {
-                  "id":"6849b5f0-e641-4ec5-83cb-1ffe23011060",
-                  "name":"Springer",
-                  "color":"orange"
-               },
-               {
-                  "id":"6a5bff63-a72d-4464-a5d0-1a601af2adf6",
-                  "name":"Emerald Group",
-                  "color":"gray"
-               },
-               {
-                  "id":"01f82d08-aa1f-4884-a4e0-3bc32f909ec4",
-                  "name":"The Atlantic",
-                  "color":"red"
-               }
-            ]
-         }
       }
    }
 }
@@ -217,7 +131,8 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          ),
+          )
+          /*
           "Type" -> SelectOptionsProperty(
             id = "/7eo",
             `type` = "select",
@@ -304,7 +219,6 @@ class DatabaseObjectSpec extends munit.FunSuite {
               )
             )
           )
-          /*
           "Summary" -> TextProperty(
             id = "?\\25"
           ),
