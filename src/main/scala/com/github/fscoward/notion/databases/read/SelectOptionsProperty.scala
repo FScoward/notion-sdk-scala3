@@ -1,6 +1,5 @@
 package com.github.fscoward.notion.databases.read
 
-import com.github.fscoward.notion.databases.Property
 import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.{ACursor, Decoder, DecodingFailure, HCursor}

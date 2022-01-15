@@ -1,4 +1,4 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
 import cats.data.Validated
 import io.circe.{ACursor, Decoder, DecodingFailure, HCursor}
