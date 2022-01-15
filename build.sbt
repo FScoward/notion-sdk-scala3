@@ -12,6 +12,6 @@ lazy val root = project
       "io.circe" %% "circe-core" % "0.14.1",
       "com.softwaremill.sttp.client3" %% "circe" % "3.3.18",
       "io.circe" %% "circe-generic" % "0.14.1",
-      "org.scalameta" %% "munit" % "0.7.26" % Test
+      "org.scalameta" %% "munit" % "1.0.0-M1" % Test
     )
   )
