@@ -3,15 +3,15 @@ package com.github.fscoward.notion.databases
 import io.circe.Decoder
 import io.circe.generic.auto.*
 
-private val typeValue = "date"
+private val date = "date"
 case class DateProperty(
     id: String,
-    `type`: String = typeValue,
+    `type`: String = date,
     date: Unit = ()
 ) extends Property
 
 val datePropertyDecoder: Decoder[DateProperty] =
   Decoder[DateProperty].ensure(
-    _.`type` == typeValue,
-    s"type is not ${typeValue}"
+    _.`type` == date,
+    s"type is not ${date}"
   )
