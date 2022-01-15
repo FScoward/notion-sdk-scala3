@@ -176,6 +176,13 @@ class DatabaseObjectSpec extends munit.FunSuite {
          "url":{
             
          }
+      },
+      "Read":{
+         "id":"_MWJ",
+         "type":"checkbox",
+         "checkbox":{
+            
+         }
       }
    }
 }
@@ -333,12 +340,12 @@ class DatabaseObjectSpec extends munit.FunSuite {
           ),
           "Link" -> URLProperty(
             id = "VVMi"
-          )
-          /*
+          ),
           "Read" -> CheckboxProperty(
             id = "_MWJ",
             `type` = "checkbox"
-          ),
+          )
+          /*
           "Status" -> SelectOptionsProperty(
             id = "`zz5",
             select = SelectOptions(

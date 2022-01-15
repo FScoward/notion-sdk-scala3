@@ -3,7 +3,7 @@ package com.github.fscoward.notion.databases
 import io.circe.Decoder
 import io.circe.generic.auto.*
 
-private val `type` = "checkbox"
+private val checkbox = "checkbox"
 //private val `type` = "select"
 case class CheckboxProperty(
     id: String,
@@ -13,6 +13,6 @@ case class CheckboxProperty(
 
 val checkboxPropertyDecoder: Decoder[CheckboxProperty] =
   Decoder[CheckboxProperty].ensure(
-    _.`type` == `type`,
-    s"type is not ${`type`}"
+    _.`type` == checkbox,
+    s"type is not ${checkbox}"
   )
