@@ -69,6 +69,44 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Type":{
+         "id":"/7eo",
+         "type":"select",
+         "select":{
+            "options":[
+               {
+                  "id":"f96d0d0a-5564-4a20-ab15-5f040d49759e",
+                  "name":"Article",
+                  "color":"default"
+               },
+               {
+                  "id":"4ac85597-5db1-4e0a-9c02-445575c38f76",
+                  "name":"TV Series",
+                  "color":"default"
+               },
+               {
+                  "id":"2991748a-5745-4c3b-9c9b-2d6846a6fa1f",
+                  "name":"Film",
+                  "color":"default"
+               },
+               {
+                  "id":"82f3bace-be25-410d-87fe-561c9c22492f",
+                  "name":"Podcast",
+                  "color":"default"
+               },
+               {
+                  "id":"861f1076-1cc4-429a-a781-54947d727a4a",
+                  "name":"Academic Journal",
+                  "color":"default"
+               },
+               {
+                  "id":"9cc30548-59d6-4cd3-94bc-d234081525c4",
+                  "name":"Essay Resource",
+                  "color":"default"
+               }
+            ]
+         }
       }
    }
 }
@@ -131,8 +169,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          )
-          /*
+          ),
           "Type" -> SelectOptionsProperty(
             id = "/7eo",
             `type` = "select",
@@ -170,7 +207,8 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          ),
+          )
+          /*
           "Publisher" -> SelectOptionsProperty(
             id = ">$Pb",
             `type` = "select",
