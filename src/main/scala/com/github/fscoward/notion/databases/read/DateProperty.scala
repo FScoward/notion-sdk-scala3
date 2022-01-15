@@ -1,4 +1,6 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
+
+import com.github.fscoward.notion.databases.Property
 
 import io.circe.Decoder
 import io.circe.generic.auto.*

@@ -1,7 +1,7 @@
 package com.github.fscoward.notion
 
 import com.github.fscoward.notion.databases.*
-import com.github.fscoward.notion.databases.read.{CheckboxProperty, URLProperty}
+import com.github.fscoward.notion.databases.read.*
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.property.{Text, TitlePropertyValue}
 import io.circe.*
