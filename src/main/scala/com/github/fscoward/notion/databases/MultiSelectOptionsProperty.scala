@@ -4,10 +4,10 @@ import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.{Decoder, HCursor}
 
-private val `type` = "multi_select"
+private val multiSelect = "multi_select"
 case class MultiSelectOptionsProperty(
     id: String,
-    `type`: String = `type`,
+    `type`: String = multiSelect,
     multi_select: MultiSelectOptions
 ) extends Property
 
@@ -23,6 +23,6 @@ case class MultiSelectPropertyValue(
 
 val multiSelectOptionsPropertyDecoder: Decoder[MultiSelectOptionsProperty] =
   Decoder[MultiSelectOptionsProperty].ensure(
-    _.`type` == `type`,
-    s"type is not ${`type`}"
+    _.`type` == multiSelect,
+    s"type is not ${multiSelect}"
   )

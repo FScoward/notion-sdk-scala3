@@ -216,6 +216,59 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Author":{
+         "id":"qNw_",
+         "type":"multi_select",
+         "multi_select":{
+            "options":[
+               {
+                  "id":"15592971-7b30-43d5-9406-2eb69b13fcae",
+                  "name":"Spencer Greenberg",
+                  "color":"default"
+               },
+               {
+                  "id":"b80a988e-dccf-4f74-b764-6ca0e49ed1b8",
+                  "name":"Seth Stephens-Davidowitz",
+                  "color":"default"
+               },
+               {
+                  "id":"0e71ee06-199d-46a4-834c-01084c8f76cb",
+                  "name":"Andrew Russell",
+                  "color":"default"
+               },
+               {
+                  "id":"5807ec38-4879-4455-9f30-5352e90e8b79",
+                  "name":"Lee Vinsel",
+                  "color":"default"
+               },
+               {
+                  "id":"4cf10a64-f3da-449c-8e04-ce6e338bbdbd",
+                  "name":"Megan Greenwell",
+                  "color":"default"
+               },
+               {
+                  "id":"833e2c78-35ed-4601-badc-50c323341d76",
+                  "name":"Kara Swisher",
+                  "color":"default"
+               },
+               {
+                  "id":"82e594e2-b1c5-4271-ac19-1a723a94a533",
+                  "name":"Paul Romer",
+                  "color":"default"
+               },
+               {
+                  "id":"ae3a2cbe-1fc9-4376-be35-331628b34623",
+                  "name":"Karen Swallow Prior",
+                  "color":"default"
+               },
+               {
+                  "id":"da068e78-dfe2-4434-9fd7-b7450b3e5830",
+                  "name":"Judith Shulevitz",
+                  "color":"default"
+               }
+            ]
+         }
       }
    }
 }
@@ -409,8 +462,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          )
-          /*
+          ),
           "Author" ->
             MultiSelectOptionsProperty(
               id = "qNw_",
@@ -463,7 +515,8 @@ class DatabaseObjectSpec extends munit.FunSuite {
                   )
                 )
               )
-            ),
+            )
+          /*
           "Name" -> TitleProperty(
             id = "title"
           )
