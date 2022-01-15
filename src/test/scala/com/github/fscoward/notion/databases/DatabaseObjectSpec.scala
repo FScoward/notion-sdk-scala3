@@ -1,6 +1,5 @@
-package com.github.fscoward.notion
+package com.github.fscoward.notion.databases
 
-import com.github.fscoward.notion.databases.*
 import com.github.fscoward.notion.databases.read.*
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.property.{Text, TitlePropertyValue}
