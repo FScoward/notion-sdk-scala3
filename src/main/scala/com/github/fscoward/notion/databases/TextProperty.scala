@@ -3,12 +3,15 @@ package com.github.fscoward.notion.databases
 import io.circe.Decoder
 import io.circe.generic.auto._
 
-private val `type` = "text"
+private val typeValue = "text"
 case class TextProperty(
     id: String,
-    `type`: String = `type`,
+    `type`: String = typeValue,
     text: Unit = ()
 ) extends Property
 
 val textPropertyDecoder: Decoder[TextProperty] =
-  Decoder[TextProperty].ensure(_.`type` == `type`, s"type is not ${`type`}")
+  Decoder[TextProperty].ensure(
+    _.`type` == typeValue,
+    s"type is not ${typeValue}"
+  )
