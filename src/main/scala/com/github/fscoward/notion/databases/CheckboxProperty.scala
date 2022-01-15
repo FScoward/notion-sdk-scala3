@@ -4,7 +4,6 @@ import io.circe.Decoder
 import io.circe.generic.auto.*
 
 private val checkbox = "checkbox"
-//private val `type` = "select"
 case class CheckboxProperty(
     id: String,
     `type`: String,
