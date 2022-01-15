@@ -169,6 +169,13 @@ class DatabaseObjectSpec extends munit.FunSuite {
          "date":{
             
          }
+      },
+      "Link":{
+         "id":"VVMi",
+         "type":"url",
+         "url":{
+            
+         }
       }
    }
 }
@@ -323,11 +330,11 @@ class DatabaseObjectSpec extends munit.FunSuite {
           ),
           "Publishing/Release Date" -> DateProperty(
             id = "?ex+"
-          )
-          /*
+          ),
           "Link" -> URLProperty(
             id = "VVMi"
-          ),
+          )
+          /*
           "Read" -> CheckboxProperty(
             id = "_MWJ",
             `type` = "checkbox"
