@@ -183,6 +183,39 @@ class DatabaseObjectSpec extends munit.FunSuite {
          "checkbox":{
             
          }
+      },
+      "Status":{
+         "id":"`zz5",
+         "type":"select",
+         "select":{
+            "options":[
+               {
+                  "id":"8c4a056e-6709-4dd1-ba58-d34d9480855a",
+                  "name":"Ready to Start",
+                  "color":"yellow"
+               },
+               {
+                  "id":"5925ba22-0126-4b58-90c7-b8bbb2c3c895",
+                  "name":"Reading",
+                  "color":"red"
+               },
+               {
+                  "id":"59aa9043-07b4-4bf4-8734-3164b13af44a",
+                  "name":"Finished",
+                  "color":"blue"
+               },
+               {
+                  "id":"f961978d-02eb-4998-933a-33c2ec378564",
+                  "name":"Listening",
+                  "color":"red"
+               },
+               {
+                  "id":"1d450853-b27a-45e2-979f-448aa1bd35de",
+                  "name":"Watching",
+                  "color":"red"
+               }
+            ]
+         }
       }
    }
 }
@@ -344,8 +377,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
           "Read" -> CheckboxProperty(
             id = "_MWJ",
             `type` = "checkbox"
-          )
-          /*
+          ),
           "Status" -> SelectOptionsProperty(
             id = "`zz5",
             select = SelectOptions(
@@ -377,7 +409,8 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          ),
+          )
+          /*
           "Author" ->
             MultiSelectOptionsProperty(
               id = "qNw_",
