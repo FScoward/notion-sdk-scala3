@@ -269,6 +269,13 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Name":{
+         "id":"title",
+         "type":"title",
+         "title":{
+            
+         }
       }
    }
 }
@@ -515,12 +522,10 @@ class DatabaseObjectSpec extends munit.FunSuite {
                   )
                 )
               )
-            )
-          /*
+            ),
           "Name" -> TitleProperty(
             id = "title"
           )
-           */
         )
       )
     assertEquals(actual, Right(expected))
