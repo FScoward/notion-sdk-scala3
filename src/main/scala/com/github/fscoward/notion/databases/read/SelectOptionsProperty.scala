@@ -1,8 +1,9 @@
-package com.github.fscoward.notion.databases
+package com.github.fscoward.notion.databases.read
 
+import com.github.fscoward.notion.databases.Property
 import io.circe.Decoder.Result
 import io.circe.generic.auto.*
-import io.circe.{Decoder, DecodingFailure, HCursor, ACursor}
+import io.circe.{ACursor, Decoder, DecodingFailure, HCursor}
 
 private val select: String = "select"
 case class SelectOptionsProperty(
