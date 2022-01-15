@@ -155,6 +155,13 @@ class DatabaseObjectSpec extends munit.FunSuite {
                }
             ]
          }
+      },
+      "Summary":{
+         "id":"?\\25",
+         "type":"text",
+         "text":{
+            
+         }
       }
    }
 }
@@ -303,11 +310,11 @@ class DatabaseObjectSpec extends munit.FunSuite {
                 )
               )
             )
-          )
-          /*
+          ),
           "Summary" -> TextProperty(
             id = "?\\25"
-          ),
+          )
+          /*
           "Publishing/Release Date" -> DateProperty(
             id = "?ex+"
           ),
