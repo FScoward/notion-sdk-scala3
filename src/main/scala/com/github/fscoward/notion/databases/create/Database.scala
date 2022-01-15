@@ -27,6 +27,8 @@ implicit val propertiesEncoder: Encoder[Map[String, Property]] =
           (key, Json.obj((value.`type`, value.asJson)))
         case (key, value: NumberProperty) =>
           (key, value.asJson)
+        case (key, value: DateProperty) =>
+          (key, value.asJson)
       }.toSeq
       Json.fromFields(seq)
     }

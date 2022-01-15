@@ -20,7 +20,8 @@ class DatabasePropertySpec extends munit.FunSuite {
             SelectPropertyValue("💪Protein", "yellow")
           )
         ),
-        "Price" -> NumberProperty(Format("dollar"))
+        "Price" -> NumberProperty(Format("dollar")),
+        "Last ordered" -> DateProperty()
       )
     )
     val expected = """
@@ -76,6 +77,9 @@ class DatabasePropertySpec extends munit.FunSuite {
         "number": {
           "format": "dollar"
         }
+      },
+      "Last ordered": {
+        "date": {}
       }
    }
 }
