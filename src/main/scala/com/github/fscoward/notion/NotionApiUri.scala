@@ -14,5 +14,6 @@ object NotionApiUri {
   object Database {
     val listAlliDatabases = s"$v1/databases"
     val create = s"$v1/databases"
+    val update = (databaseId: String) => s"$v1/databases/$databaseId"
   }
 }
