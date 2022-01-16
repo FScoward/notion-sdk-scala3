@@ -22,7 +22,7 @@ class NotionApiClient {
   def get[R](uri: String)(implicit m: io.circe.Decoder[R]): R = {
     val request = basicRequest
       .headers(headers)
-      .get(uri"${uri}")
+      .get(uri"$uri")
       .response(asJson[R].getRight)
     val backend = HttpURLConnectionBackend()
     val response = request.send(backend)
@@ -41,10 +41,13 @@ class NotionApiClient {
     get[ListDatabase](NotionApiUri.Database.listAlliDatabases)
   }
 
-  def post(uri: String, body: String) = {
+  def post(
+      uri: String,
+      body: String
+  ): Identity[Response[Either[String, String]]] = {
     val request = basicRequest
       .headers(headers ++ Map("Content-Type" -> "application/json"))
-      .post(uri"${uri}")
+      .post(uri"$uri")
       .body(body)
     val backend = HttpURLConnectionBackend()
     val response = request.send(backend)
@@ -53,13 +56,16 @@ class NotionApiClient {
 
   def createDatabase(
       database: com.github.fscoward.notion.databases.create.Database
-  ) = {
+  ): Identity[Response[Either[String, String]]] = {
     import com.github.fscoward.notion.databases.create.propertiesEncoder
     val response = post(NotionApiUri.Database.create, database.asJson.toString)
     response
   }
 
-  def createPage(parentDatabaseId: String, properties: Map[String, String]) = {
+  def createPage(
+      parentDatabaseId: String,
+      properties: Map[String, String]
+  ): Unit = {
 //    import com.github.fscoward.notion.pages.create
 //    val request = create.PageProperty(
 //      create.PageParent("7b1e0686274f4ae6b6373c2236b57080"),
