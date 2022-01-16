@@ -62,6 +62,19 @@ class NotionApiClient {
     response
   }
 
+  def update(
+      uri: String,
+      body: String
+  ): Identity[Response[Either[String, String]]] = {
+    val request = basicRequest
+      .headers(headers ++ Map("Content-Type" -> "application/json"))
+      .patch(uri"$uri")
+      .body(body)
+    val backend = HttpURLConnectionBackend()
+    val response = request.send(backend)
+    response
+  }
+
   def createPage(
       parentDatabaseId: String,
       properties: Map[String, String]
