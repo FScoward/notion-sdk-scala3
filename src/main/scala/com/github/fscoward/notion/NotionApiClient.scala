@@ -13,6 +13,8 @@ import io.circe.parser.*
 import io.circe.syntax.*
 import com.github.fscoward.notion.users.*
 
+import java.net.HttpURLConnection
+
 class NotionApiClient {
   val headers = Map(
     "Authorization" -> s"Bearer ${System.getenv("NOTION_INTEGRATION_TOKEN")}",
@@ -70,7 +72,11 @@ class NotionApiClient {
       .headers(headers ++ Map("Content-Type" -> "application/json"))
       .patch(uri"$uri")
       .body(body)
-    val backend = HttpURLConnectionBackend()
+
+    val c: java.net.HttpURLConnection => Unit = (h: HttpURLConnection) =>
+      h.setRequestProperty("X-HTTP-Method-Override", "PATCH")
+    val backend = HttpURLConnectionBackend(customizeConnection = c)
+
     val response = request.send(backend)
     response
   }
@@ -101,5 +107,16 @@ class NotionApiClient {
 //
 //    val response = post(NotionApiUri.Page.pages, request.asJson.toString)
 //    println(response)
+  }
+
+  def updatePage(
+      pageId: String,
+      updatePageProperty: com.github.fscoward.notion.pages.create.Properties
+  ): Identity[Response[Either[String, String]]] = {
+    import com.github.fscoward.notion.pages.create.pagePropertiesEncoder
+    update(
+      uri = s"${NotionApiUri.Page.page(pageId)}",
+      body = updatePageProperty.asJson.toString
+    )
   }
 }
