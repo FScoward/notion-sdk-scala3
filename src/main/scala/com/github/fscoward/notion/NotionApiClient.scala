@@ -6,12 +6,15 @@ import com.github.fscoward.notion.pages.property.TextObj
 import com.github.fscoward.notion.pages.text.TextPropertyValue
 import sttp.client3.*
 import sttp.client3.circe.*
+import sttp.client3.okhttp.OkHttpSyncBackend
 import sttp.model.*
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import com.github.fscoward.notion.users.*
+
+import java.net.HttpURLConnection
 
 class NotionApiClient {
   val headers = Map(
@@ -70,7 +73,8 @@ class NotionApiClient {
       .headers(headers ++ Map("Content-Type" -> "application/json"))
       .patch(uri"$uri")
       .body(body)
-    val backend = HttpURLConnectionBackend()
+
+    val backend = OkHttpSyncBackend()
     val response = request.send(backend)
     response
   }
@@ -101,5 +105,16 @@ class NotionApiClient {
 //
 //    val response = post(NotionApiUri.Page.pages, request.asJson.toString)
 //    println(response)
+  }
+
+  def updatePage(
+      pageId: String,
+      updatePageProperty: com.github.fscoward.notion.pages.create.Properties
+  ): Identity[Response[Either[String, String]]] = {
+    import com.github.fscoward.notion.pages.create.pagePropertiesEncoder
+    update(
+      uri = s"${NotionApiUri.Page.page(pageId)}",
+      body = Json.obj(("properties", updatePageProperty.asJson)).toString
+    )
   }
 }
