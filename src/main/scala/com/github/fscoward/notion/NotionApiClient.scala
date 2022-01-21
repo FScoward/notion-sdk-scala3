@@ -6,6 +6,7 @@ import com.github.fscoward.notion.pages.property.TextObj
 import com.github.fscoward.notion.pages.text.TextPropertyValue
 import sttp.client3.*
 import sttp.client3.circe.*
+import sttp.client3.okhttp.OkHttpSyncBackend
 import sttp.model.*
 import io.circe.*
 import io.circe.generic.auto.*
@@ -73,10 +74,7 @@ class NotionApiClient {
       .patch(uri"$uri")
       .body(body)
 
-    val c: java.net.HttpURLConnection => Unit = (h: HttpURLConnection) =>
-      h.setRequestProperty("X-HTTP-Method-Override", "PATCH")
-    val backend = HttpURLConnectionBackend(customizeConnection = c)
-
+    val backend = OkHttpSyncBackend()
     val response = request.send(backend)
     response
   }
@@ -116,7 +114,7 @@ class NotionApiClient {
     import com.github.fscoward.notion.pages.create.pagePropertiesEncoder
     update(
       uri = s"${NotionApiUri.Page.page(pageId)}",
-      body = updatePageProperty.asJson.toString
+      body = Json.obj(("properties", updatePageProperty.asJson)).toString
     )
   }
 }

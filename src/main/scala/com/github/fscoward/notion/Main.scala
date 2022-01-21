@@ -44,13 +44,13 @@ import io.circe.syntax.*
 //  )
 //  println(httpClient.createDatabase(db))
   val res = httpClient.updatePage(
-    pageId = "ef917eff368541d786e2ee4b3641d3dd",
+    pageId = "96297f595fef48fd8498b631b76ab7b6",
     com.github.fscoward.notion.pages.create
       .Properties(
         Map(
           "Name" -> com.github.fscoward.notion.pages.create.TitleProperty(
             com.github.fscoward.notion.pages.create
-              .TextPropertyValue(content = "try")
+              .TextPropertyValue(content = "Scala")
           )
         )
       )
