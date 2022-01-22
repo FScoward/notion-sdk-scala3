@@ -9,6 +9,8 @@ object NotionApiUri {
   object Page {
     val page: String => String = (pageId: String) => s"$v1/pages/$pageId"
     val pages = s"$v1/pages"
+    def retrieveAPagePropertyItem(pageId: String, propertyId: String) =
+      s"$v1/pages/$pageId/properties/$propertyId"
   }
 
   object Database {
