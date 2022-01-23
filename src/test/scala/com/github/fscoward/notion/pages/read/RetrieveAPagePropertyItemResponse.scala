@@ -5,13 +5,13 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 
-case class PagePropertyItem(
+case class PagePropertyItemResponse(
     `object`: String = "list",
     next_cursor: Option[String],
     has_more: Boolean
 )
 
-class RetrieveAPagePropertyItem extends munit.FunSuite {
+class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
   test("decode json") {
     val json =
       """
@@ -22,8 +22,9 @@ class RetrieveAPagePropertyItem extends munit.FunSuite {
 }        
       """
 
-    val actual = decode[PagePropertyItem](json)
-    val expected = PagePropertyItem(next_cursor = None, has_more = false)
+    val actual = decode[PagePropertyItemResponse](json)
+    val expected =
+      PagePropertyItemResponse(next_cursor = None, has_more = false)
     assertEquals(actual, Right(expected))
   }
 }
