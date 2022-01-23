@@ -145,7 +145,7 @@ case class RichTextProperty(
     plain_text: String,
     href: Option[String],
     annotations: NotionAnnotation,
-    `type`: String, // TODO: Enum
+    `type`: String = "text",
     text: Text,
     link: URLProperty
 ) extends RichText
