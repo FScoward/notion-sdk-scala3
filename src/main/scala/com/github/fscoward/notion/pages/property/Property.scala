@@ -20,7 +20,7 @@ trait Property
 case class PropertyValue(
     `type`: String,
     id: Option[String],
-    title: Option[Seq[TextObject]] = None,
+    title: Option[Seq[RichTextProperty]] = None,
     files: Option[Seq[File]] = None
 ) extends Property
 
@@ -141,7 +141,7 @@ case class TitlePropertyValue(
     inline_object: Option[String]
 ) extends Property
 
-case class TextObject(
+case class RichTextProperty(
     plain_text: String,
     href: Option[String],
     annotations: NotionAnnotation,
@@ -151,7 +151,7 @@ case class TextObject(
 ) extends RichText
 
 case class TextObjects(
-    value: Seq[TextObject]
+    value: Seq[RichTextProperty]
 ) extends Property
 
 case class Text(
