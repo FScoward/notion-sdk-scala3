@@ -112,13 +112,6 @@ implicit val decodeColor: Decoder[Color] = Decoder.decodeString.emapTry { str =>
   scala.util.Try(Color.valueOf(str))
 }
 
-// trait RichText extends Property {
-//   val plain_text: String
-//   val href: Option[String]
-//   val annotations: NotionAnnotation
-//   val `type`: String // TODO: Enum
-// }
-
 trait RichText extends Property {
   val plain_text: String
   val href: Option[String]
