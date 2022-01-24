@@ -17,13 +17,6 @@ import io.circe.syntax.*
 
 trait Property
 
-case class PropertyValue(
-    `type`: String,
-    id: Option[String],
-    title: Option[Seq[RichTextProperty]] = None,
-    files: Option[Seq[File]] = None
-) extends Property
-
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
     Decoder[SelectProperty].widen,
