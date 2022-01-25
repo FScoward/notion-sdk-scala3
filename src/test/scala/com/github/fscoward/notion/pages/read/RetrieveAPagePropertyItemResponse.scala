@@ -7,6 +7,7 @@ import io.circe.Decoder.Result
 import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
+import cats.syntax.functor.*
 
 case class PagePropertyItemResponse(
     `object`: String = "list",
@@ -15,11 +16,22 @@ case class PagePropertyItemResponse(
     has_more: Boolean
 )
 
-case class PagePropertyItem(
-    `object`: String = "property_item",
+trait PagePropertyItem {
+  val `object`: String
+  val `type`: String
+}
+
+case class RichText(
+    `object`: String,
     `type`: String,
     rich_text: com.github.fscoward.notion.pages.property.Property
-)
+) extends PagePropertyItem
+
+import com.github.fscoward.notion.pages.property.propertyDecoder
+implicit val pagePropertyItemDecoder: Decoder[PagePropertyItem] =
+  List[Decoder[PagePropertyItem]](
+    Decoder[RichText].widen
+  ).reduceLeft(_ or _)
 
 class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
   test("decode json") {
@@ -55,7 +67,6 @@ class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
 }        
       """
 
-    import com.github.fscoward.notion.pages.property.propertyDecoder
     implicit val pagePropertyItemResponseDecoder
         : Decoder[PagePropertyItemResponse] =
       (c: HCursor) => {
@@ -71,7 +82,8 @@ class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
       PagePropertyItemResponse(
         next_cursor = None,
         results = Seq(
-          PagePropertyItem(
+          RichText(
+            `object` = "property_item",
             `type` = "rich_text",
             rich_text = RichTextProperty(
               plain_text = "アイウエオ",
