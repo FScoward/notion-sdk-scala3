@@ -19,6 +19,7 @@ trait Property
 
 implicit val propertyDecoder: Decoder[Property] =
   List[Decoder[Property]](
+    Decoder[RichTextProperty].widen,
     Decoder[SelectProperty].widen,
     textPropertyDecoder.widen,
     Decoder[DateProperty].widen,
@@ -132,8 +133,8 @@ case class RichTextProperty(
     href: Option[String],
     annotations: NotionAnnotation,
     `type`: String = "text",
-    text: Text,
-    link: URLProperty
+    text: Text
+//    link: URLProperty
 ) extends RichText
 
 case class TextObjects(
