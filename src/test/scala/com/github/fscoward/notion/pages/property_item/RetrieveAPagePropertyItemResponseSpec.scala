@@ -13,11 +13,6 @@ import com.github.fscoward.notion.pages.property_item.{
   RetrieveAPagePropertyItemResponse,
   RichText
 }
-import com.github.fscoward.notion.pages.property.propertyDecoder
-implicit val pagePropertyItemDecoder: Decoder[PagePropertyItem] =
-  List[Decoder[PagePropertyItem]](
-    Decoder[RichText].widen
-  ).reduceLeft(_ or _)
 
 class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
   test("decode json") {
@@ -53,21 +48,6 @@ class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
 }        
       """
 
-    implicit val pagePropertyItemResponseDecoder
-        : Decoder[RetrieveAPagePropertyItemResponse] =
-      (c: HCursor) => {
-        for {
-          obj <- c.downField("object").as[String]
-          results <- c.downField("results").as[Seq[PagePropertyItem]]
-          next_cursor <- c.downField("next_cursor").as[Option[String]]
-          has_more <- c.downField("has_more").as[Boolean]
-        } yield RetrieveAPagePropertyItemResponse(
-          obj,
-          results,
-          next_cursor,
-          has_more
-        )
-      }
     val actual = decode[RetrieveAPagePropertyItemResponse](json)
     val expected =
       RetrieveAPagePropertyItemResponse(
