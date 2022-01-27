@@ -8,6 +8,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import cats.syntax.functor.*
+import com.github.fscoward.notion.pages.property_item.PagePropertyItem
 
 case class PagePropertyItemResponse(
     `object`: String = "list",
@@ -15,11 +16,6 @@ case class PagePropertyItemResponse(
     next_cursor: Option[String],
     has_more: Boolean
 )
-
-trait PagePropertyItem {
-  val `object`: String
-  val `type`: String
-}
 
 case class RichText(
     `object`: String,
