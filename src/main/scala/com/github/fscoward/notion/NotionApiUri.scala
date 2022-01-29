@@ -19,4 +19,9 @@ object NotionApiUri {
     val update: String => String = (databaseId: String) =>
       s"$v1/databases/$databaseId"
   }
+
+  object Block {
+    // https://api.notion.com/v1/blocks/{block_id}
+    def retrieveABlock(blockId: String) = s"$v1/blocks/$block_id"
+  }
 }
