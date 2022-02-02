@@ -1,10 +1,19 @@
 package com.github.fscoward.notion.blocks
 
-import io.circe._, io.circe.generic.semiauto._
+import io.circe.*
+import io.circe.generic.semiauto.*
+
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 case class Block(
     `object`: String = "block",
-    id: String
+    id: String,
+    created_time: LocalDateTime
 )
 
+val dateTimeFormatter =
+  DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+implicit val datetimeDecoder: Decoder[LocalDateTime] =
+  Decoder.decodeLocalDateTimeWithFormatter(dateTimeFormatter)
 implicit val blockDecoder: Decoder[Block] = deriveDecoder[Block]
