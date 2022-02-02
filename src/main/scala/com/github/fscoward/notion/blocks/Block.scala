@@ -32,7 +32,8 @@ case class Block(
     created_time: LocalDateTime,
     last_edited_time: LocalDateTime,
     has_children: Boolean,
-    `type`: BlockType
+    `type`: BlockType,
+    archived: Boolean
 )
 
 val dateTimeFormatter =
