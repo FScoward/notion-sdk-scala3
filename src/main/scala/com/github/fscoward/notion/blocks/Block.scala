@@ -11,7 +11,8 @@ case class Block(
     id: String,
     created_time: LocalDateTime,
     last_edited_time: LocalDateTime,
-    has_children: Boolean
+    has_children: Boolean,
+    `type`: String
 )
 
 val dateTimeFormatter =
