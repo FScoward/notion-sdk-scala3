@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import scala.util.Try
 
-case class Block(
+case class BlockObject(
     `object`: String = "block",
     id: String,
     created_time: LocalDateTime,
@@ -21,4 +21,4 @@ val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 implicit val datetimeDecoder: Decoder[LocalDateTime] =
   Decoder.decodeLocalDateTimeWithFormatter(dateTimeFormatter)
-implicit val blockDecoder: Decoder[Block] = deriveDecoder[Block]
+implicit val blockDecoder: Decoder[BlockObject] = deriveDecoder[BlockObject]

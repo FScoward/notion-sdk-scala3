@@ -8,7 +8,7 @@ import io.circe.syntax.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class BlockSpec extends munit.FunSuite {
+class BlockObjectSpec extends munit.FunSuite {
   test("decode json") {
     val json =
       // sample data from: https://developers.notion.com/reference/retrieve-a-block
@@ -25,7 +25,7 @@ class BlockSpec extends munit.FunSuite {
       """
 
     val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    val expected = Block(
+    val expected = BlockObject(
       id = "9bc30ad4-9373-46a5-84ab-0a7845ee52e6",
       created_time = LocalDateTime.parse(
         "2021-03-16T16:31:00.000Z",
@@ -39,7 +39,7 @@ class BlockSpec extends munit.FunSuite {
       `type` = BlockType.to_do,
       archived = false
     )
-    val actual = decode[Block](json)
+    val actual = decode[BlockObject](json)
     assertEquals(actual, Right(expected))
   }
 }
