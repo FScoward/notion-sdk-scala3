@@ -35,7 +35,7 @@ class BlockSpec extends munit.FunSuite {
         formatter
       ),
       has_children = false,
-      `type` = "to_do"
+      `type` = BlockType.to_do
     )
     val actual = decode[Block](json)
     assertEquals(actual, Right(expected))
