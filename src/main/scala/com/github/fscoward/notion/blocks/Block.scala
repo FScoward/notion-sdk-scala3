@@ -9,7 +9,8 @@ import java.time.format.DateTimeFormatter
 case class Block(
     `object`: String = "block",
     id: String,
-    created_time: LocalDateTime
+    created_time: LocalDateTime,
+    last_edited_time: LocalDateTime
 )
 
 val dateTimeFormatter =
