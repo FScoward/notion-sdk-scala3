@@ -10,7 +10,8 @@ case class Block(
     `object`: String = "block",
     id: String,
     created_time: LocalDateTime,
-    last_edited_time: LocalDateTime
+    last_edited_time: LocalDateTime,
+    has_children: Boolean
 )
 
 val dateTimeFormatter =
