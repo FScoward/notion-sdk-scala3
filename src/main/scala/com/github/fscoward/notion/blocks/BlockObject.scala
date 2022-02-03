@@ -14,8 +14,10 @@ case class BlockObject(
     last_edited_time: LocalDateTime,
     has_children: Boolean,
     `type`: BlockType,
-    archived: Boolean
+    archived: Boolean,
+    to_do: ToDoBlock
 )
+case class ToDoBlock(text: Seq[Unit])
 
 val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")

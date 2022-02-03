@@ -20,7 +20,10 @@ class BlockObjectSpec extends munit.FunSuite {
     "last_edited_time": "2021-03-16T16:32:00.000Z",
     "has_children": false,
     "type": "to_do",
-    "archived": false
+    "archived": false,
+    "to_do": {
+      "text": []
+    }
 }
       """
 
@@ -37,7 +40,8 @@ class BlockObjectSpec extends munit.FunSuite {
       ),
       has_children = false,
       `type` = BlockType.to_do,
-      archived = false
+      archived = false,
+      to_do = ToDoBlock(Nil)
     )
     val actual = decode[BlockObject](json)
     assertEquals(actual, Right(expected))
