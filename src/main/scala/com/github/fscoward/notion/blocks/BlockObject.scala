@@ -25,7 +25,8 @@ case class ToDoBlock(text: Seq[TodoBlockContent])
 case class TodoBlockContent(
     `type`: String = "text",
     text: Text,
-    annotations: NotionAnnotation
+    annotations: NotionAnnotation,
+    plain_text: String
 )
 implicit val urlPropertyDecoder: Decoder[URLProperty] = deriveDecoder
 implicit val textDecoder: Decoder[Text] = (c: HCursor) =>
