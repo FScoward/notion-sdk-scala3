@@ -21,7 +21,7 @@ case class BlockObject(
     archived: Boolean,
     to_do: ToDoBlock
 )
-case class ToDoBlock(text: Seq[TodoBlockContent], checked: Boolean)
+
 case class TodoBlockContent(
     `type`: String = "text",
     text: Text,
