@@ -39,7 +39,8 @@ class BlockObjectSpec extends munit.FunSuite {
             "code": false,
             "color": "default"
           },
-          "plain_text": "Lacinato kale"
+          "plain_text": "Lacinato kale",
+          "href": null
         }
       ]
     }
@@ -74,7 +75,8 @@ class BlockObjectSpec extends munit.FunSuite {
               false,
               "default"
             ),
-            plain_text = "Lacinato kale"
+            plain_text = "Lacinato kale",
+            href = None
           )
         )
       )
