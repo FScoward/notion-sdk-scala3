@@ -22,19 +22,8 @@ case class BlockObject(
     to_do: ToDoBlock
 )
 
-case class TodoBlockContent(
-    `type`: String = "text",
-    text: Text,
-    annotations: NotionAnnotation,
-    plain_text: String,
-    href: Option[String]
-)
 implicit val urlPropertyDecoder: Decoder[URLProperty] = deriveDecoder
-implicit val textDecoder: Decoder[Text] = (c: HCursor) =>
-  for {
-    content <- c.downField("content").as[String]
-    link <- c.downField("link").as[Option[URLProperty]]
-  } yield Text(content = content, link = link)
+
 implicit val todoBlockContentDecoder: Decoder[TodoBlockContent] =
   deriveDecoder[TodoBlockContent]
 
