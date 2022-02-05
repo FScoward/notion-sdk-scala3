@@ -42,7 +42,8 @@ class BlockObjectSpec extends munit.FunSuite {
           "plain_text": "Lacinato kale",
           "href": null
         }
-      ]
+      ],
+      "checked": false
     }
 }
       """
@@ -78,7 +79,8 @@ class BlockObjectSpec extends munit.FunSuite {
             plain_text = "Lacinato kale",
             href = None
           )
-        )
+        ),
+        checked = false
       )
     )
     val actual = decode[BlockObject](json)
