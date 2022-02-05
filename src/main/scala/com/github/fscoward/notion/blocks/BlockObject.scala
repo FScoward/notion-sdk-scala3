@@ -22,11 +22,6 @@ case class BlockObject(
     to_do: ToDoBlock
 )
 
-implicit val urlPropertyDecoder: Decoder[URLProperty] = deriveDecoder
-
-implicit val todoBlockContentDecoder: Decoder[TodoBlockContent] =
-  deriveDecoder[TodoBlockContent]
-
 val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 implicit val datetimeDecoder: Decoder[LocalDateTime] =
