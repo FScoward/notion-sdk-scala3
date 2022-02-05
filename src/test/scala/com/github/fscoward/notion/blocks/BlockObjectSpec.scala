@@ -1,5 +1,7 @@
 package com.github.fscoward.notion.blocks
 
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.property.Text
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
@@ -22,7 +24,23 @@ class BlockObjectSpec extends munit.FunSuite {
     "type": "to_do",
     "archived": false,
     "to_do": {
-      "text": []
+      "text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Lacinato kale",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          }
+        }
+      ]
     }
 }
       """
@@ -41,7 +59,23 @@ class BlockObjectSpec extends munit.FunSuite {
       has_children = false,
       `type` = BlockType.to_do,
       archived = false,
-      to_do = ToDoBlock(Nil)
+      to_do = ToDoBlock(
+        Seq(
+          TodoBlockContent(
+            text = Text(
+              content = "Lacinato kale",
+              link = None
+            ),
+            annotations = NotionAnnotation(
+              false,
+              false,
+              false,
+              false,
+              "default"
+            )
+          )
+        )
+      )
     )
     val actual = decode[BlockObject](json)
     assertEquals(actual, Right(expected))

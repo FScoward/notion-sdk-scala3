@@ -1,6 +1,10 @@
 package com.github.fscoward.notion.blocks
 
+import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.property.Text
+import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.*
+import io.circe.Decoder.Result
 import io.circe.generic.semiauto.*
 
 import java.time.LocalDateTime
@@ -17,7 +21,20 @@ case class BlockObject(
     archived: Boolean,
     to_do: ToDoBlock
 )
-case class ToDoBlock(text: Seq[Unit])
+case class ToDoBlock(text: Seq[TodoBlockContent])
+case class TodoBlockContent(
+    `type`: String = "text",
+    text: Text,
+    annotations: NotionAnnotation
+)
+implicit val urlPropertyDecoder: Decoder[URLProperty] = deriveDecoder
+implicit val textDecoder: Decoder[Text] = (c: HCursor) =>
+  for {
+    content <- c.downField("content").as[String]
+    link <- c.downField("link").as[Option[URLProperty]]
+  } yield Text(content = content, link = link)
+implicit val todoBlockContentDecoder: Decoder[TodoBlockContent] =
+  deriveDecoder[TodoBlockContent]
 
 val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
