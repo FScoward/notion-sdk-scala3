@@ -19,7 +19,7 @@ import java.net.HttpURLConnection
 
 class NotionApiClient {
   val headers = Map(
-    "Authorization" -> s"Bearer ${System.getenv("NOTION_INTEGRATION_TOKEN")}",
+    "Authorization" -> s"Bearer ${System.getenv("NOTION_API_KEY")}",
     "Notion-Version" -> "2021-08-16"
   )
 
