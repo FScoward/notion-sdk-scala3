@@ -1,5 +1,6 @@
 package com.github.fscoward.notion
 
+import com.github.fscoward.notion.blocks.BlockObject
 import com.github.fscoward.notion.databases.read.TitleProperty
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.property.TextObj
@@ -42,6 +43,11 @@ class NotionApiClient {
 
   def listDatabases: ListDatabase = {
     get[ListDatabase](NotionApiUri.Database.listAlliDatabases)
+  }
+
+  def retrieveABlock(blockId: String): BlockObject = {
+    import com.github.fscoward.notion.blocks.blockDecoder
+    get[BlockObject](NotionApiUri.Block.retrieveABlock(blockId))
   }
 
   def post(

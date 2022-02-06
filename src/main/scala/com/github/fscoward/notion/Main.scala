@@ -22,6 +22,7 @@ import io.circe.syntax.*
 
 @main def hello(): Unit =
   val httpClient = new NotionApiClient()
+  println(httpClient.retrieveABlock("e9951f07-2fbc-4222-babb-8456eecb8544"))
 //  println(httpClient.listDatabases)
 //  println(httpClient.createPage(null, null))
 //  val db = Database(
@@ -43,16 +44,17 @@ import io.circe.syntax.*
 //    )
 //  )
 //  println(httpClient.createDatabase(db))
-  val res = httpClient.updatePage(
-    pageId = "96297f595fef48fd8498b631b76ab7b6",
-    com.github.fscoward.notion.pages.create
-      .Properties(
-        Map(
-          "Name" -> com.github.fscoward.notion.pages.create.TitleProperty(
-            com.github.fscoward.notion.pages.create
-              .TextPropertyValue(content = "Scala")
-          )
-        )
-      )
-  )
-  println(res)
+
+//  val res = httpClient.updatePage(
+//    pageId = "96297f595fef48fd8498b631b76ab7b6",
+//    com.github.fscoward.notion.pages.create
+//      .Properties(
+//        Map(
+//          "Name" -> com.github.fscoward.notion.pages.create.TitleProperty(
+//            com.github.fscoward.notion.pages.create
+//              .TextPropertyValue(content = "Scala")
+//          )
+//        )
+//      )
+//  )
+//  println(res)
