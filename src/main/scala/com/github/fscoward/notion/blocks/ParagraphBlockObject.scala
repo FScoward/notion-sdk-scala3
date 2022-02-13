@@ -11,5 +11,3 @@ case class ParagraphBlockObject(
     archived: Boolean,
     paragraph: ParagraphBlock
 ) extends BlockObject
-
-case class ParagraphBlock(text: Seq[TextBlockContent])
