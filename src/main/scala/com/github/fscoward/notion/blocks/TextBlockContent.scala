@@ -6,8 +6,7 @@ import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.generic.semiauto.deriveDecoder
 import io.circe.{Decoder, HCursor}
 
-// todo: rename text block content
-case class TodoBlockContent(
+case class TextBlockContent(
     `type`: String = "text",
     text: Text,
     annotations: NotionAnnotation,
@@ -23,5 +22,5 @@ implicit val textDecoder: Decoder[Text] = (c: HCursor) =>
     link <- c.downField("link").as[Option[URLProperty]]
   } yield Text(content = content, link = link)
 
-implicit val todoBlockContentDecoder: Decoder[TodoBlockContent] =
-  deriveDecoder[TodoBlockContent]
+implicit val todoBlockContentDecoder: Decoder[TextBlockContent] =
+  deriveDecoder[TextBlockContent]

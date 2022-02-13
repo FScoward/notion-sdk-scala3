@@ -12,4 +12,4 @@ case class ParagraphBlockObject(
     paragraph: ParagraphBlock
 ) extends BlockObject
 
-case class ParagraphBlock(text: Seq[TodoBlockContent])
+case class ParagraphBlock(text: Seq[TextBlockContent])

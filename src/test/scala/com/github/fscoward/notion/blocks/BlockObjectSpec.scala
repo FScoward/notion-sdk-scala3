@@ -67,7 +67,7 @@ class BlockObjectSpec extends munit.FunSuite {
       archived = false,
       to_do = ToDoBlock(
         Seq(
-          TodoBlockContent(
+          TextBlockContent(
             text = Text(
               content = "Lacinato kale",
               link = None
@@ -193,7 +193,7 @@ class BlockObjectSpec extends munit.FunSuite {
       archived = false,
       paragraph = ParagraphBlock(text =
         Seq(
-          TodoBlockContent(
+          TextBlockContent(
             text = Text(
               content = "test",
               link = None
