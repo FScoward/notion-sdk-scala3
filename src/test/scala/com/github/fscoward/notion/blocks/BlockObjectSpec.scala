@@ -150,4 +150,69 @@ class BlockObjectSpec extends munit.FunSuite {
     assertEquals(actual, Right(expected))
   }
 
+  test("decode paragraph") {
+    val json = """
+{
+  "object": "block",
+  "id": "b4887c6c-4de1-4425-95e9-0c0bb096a001",
+  "created_time": "2021-05-23T02:49:00.000Z",
+  "last_edited_time": "2021-05-23T02:49:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "paragraph",
+  "paragraph": {
+    "text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "test",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "test",
+        "href": null
+      }
+    ]
+  }
+}
+      """
+    val expected = ParagraphBlockObject(
+      id = "b4887c6c-4de1-4425-95e9-0c0bb096a001",
+      created_time = LocalDateTime.parse("2021-05-23T02:49:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2021-05-23T02:49:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.paragraph,
+      archived = false,
+      paragraph = ParagraphBlock(text =
+        Seq(
+          TodoBlockContent(
+            text = Text(
+              content = "test",
+              link = None
+            ),
+            annotations = NotionAnnotation(
+              false,
+              false,
+              false,
+              false,
+              "default"
+            ),
+            plain_text = "test",
+            href = None
+          )
+        )
+      )
+    )
+    val actual = decode[ParagraphBlockObject](json)
+    assertEquals(actual, Right(expected))
+  }
+
 }

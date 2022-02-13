@@ -6,6 +6,7 @@ import com.github.fscoward.notion.pages.url.URLProperty
 import io.circe.generic.semiauto.deriveDecoder
 import io.circe.{Decoder, HCursor}
 
+// todo: rename text block content
 case class TodoBlockContent(
     `type`: String = "text",
     text: Text,
