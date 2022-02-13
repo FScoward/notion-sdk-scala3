@@ -215,4 +215,68 @@ class BlockObjectSpec extends munit.FunSuite {
     assertEquals(actual, Right(expected))
   }
 
+  test("decode quote") {
+    val json = """
+{
+  "object": "block",
+  "id": "642f3572-6fcf-4f40-bcb1-0da3f0e2a5d1",
+  "created_time": "2022-02-13T12:43:00.000Z",
+  "last_edited_time": "2022-02-13T12:43:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "quote",
+  "quote": {
+    "text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "引用ブロック",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "引用ブロック",
+        "href": null
+      }
+    ]
+  }
+}
+        """
+    val expected = QuoteBlockObject(
+      id = "642f3572-6fcf-4f40-bcb1-0da3f0e2a5d1",
+      created_time = LocalDateTime.parse("2022-02-13T12:43:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-02-13T12:43:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.quote,
+      archived = false,
+      quote = QuoteBlock(text =
+        Seq(
+          TextBlockContent(
+            text = Text(
+              content = "引用ブロック",
+              link = None
+            ),
+            annotations = NotionAnnotation(
+              false,
+              false,
+              false,
+              false,
+              "default"
+            ),
+            plain_text = "引用ブロック",
+            href = None
+          )
+        )
+      )
+    )
+    val actual = decode[QuoteBlockObject](json)
+    assertEquals(actual, Right(expected))
+  }
 }
