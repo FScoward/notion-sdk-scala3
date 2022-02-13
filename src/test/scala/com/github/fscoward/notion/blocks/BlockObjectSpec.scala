@@ -15,7 +15,7 @@ class BlockObjectSpec extends munit.FunSuite {
   val formatter: DateTimeFormatter =
     DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 
-  test("decode json") {
+  test("decode todo") {
     val json =
       // sample data from: https://developers.notion.com/reference/retrieve-a-block
       """
