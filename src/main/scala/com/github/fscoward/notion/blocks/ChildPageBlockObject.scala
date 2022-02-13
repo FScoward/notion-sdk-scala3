@@ -10,4 +10,4 @@ case class ChildPageBlockObject(
     `type`: BlockType,
     archived: Boolean,
     child_page: ChildPageBlock
-)
+) extends BlockObject

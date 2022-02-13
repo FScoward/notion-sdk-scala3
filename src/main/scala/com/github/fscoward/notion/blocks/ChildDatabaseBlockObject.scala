@@ -10,4 +10,4 @@ case class ChildDatabaseBlockObject(
     `type`: BlockType,
     archived: Boolean,
     child_database: ChildDatabaseBlock
-)
+) extends BlockObject
