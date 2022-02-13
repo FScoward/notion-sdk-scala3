@@ -21,43 +21,6 @@ trait BlockObject {
   val archived: Boolean
 }
 
-case class TodoBlockObject(
-    id: String,
-    created_time: LocalDateTime,
-    last_edited_time: LocalDateTime,
-    has_children: Boolean,
-    `type`: BlockType,
-    archived: Boolean,
-    to_do: ToDoBlock
-) extends BlockObject
-
-case class ChildPageBlockObject(
-    id: String,
-    created_time: LocalDateTime,
-    last_edited_time: LocalDateTime,
-    has_children: Boolean,
-    `type`: BlockType,
-    archived: Boolean,
-    child_page: ChildPageBlock
-)
-
-case class ChildPageBlock(
-    title: String
-)
-
-case class ChildDatabaseBlockObject(
-    id: String,
-    created_time: LocalDateTime,
-    last_edited_time: LocalDateTime,
-    has_children: Boolean,
-    `type`: BlockType,
-    archived: Boolean,
-    child_database: ChildDatabaseBlock
-)
-case class ChildDatabaseBlock(
-    title: String
-)
-
 val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 implicit val datetimeDecoder: Decoder[LocalDateTime] =
