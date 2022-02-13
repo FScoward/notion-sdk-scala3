@@ -119,4 +119,35 @@ class BlockObjectSpec extends munit.FunSuite {
     val actual = decode[ChildPageBlockObject](json)
     assertEquals(actual, Right(expected))
   }
+
+  test("decode child_database") {
+    val json = """
+{
+  "object": "block",
+  "id": "ef917eff-3685-41d7-86e2-ee4b3641d3dd",
+  "created_time": "2022-01-15T18:02:00.000Z",
+  "last_edited_time": "2022-01-21T14:40:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "child_database",
+  "child_database": {
+    "title": "Grocery List"
+  }
+}
+      """
+    val expected = ChildDatabaseBlockObject(
+      id = "ef917eff-3685-41d7-86e2-ee4b3641d3dd",
+      created_time = LocalDateTime.parse("2022-01-15T18:02:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-01-21T14:40:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.child_database,
+      archived = false,
+      child_database = ChildDatabaseBlock("Grocery List")
+    )
+
+    val actual = decode[ChildDatabaseBlockObject](json)
+    assertEquals(actual, Right(expected))
+  }
+
 }

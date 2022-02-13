@@ -45,6 +45,19 @@ case class ChildPageBlock(
     title: String
 )
 
+case class ChildDatabaseBlockObject(
+    id: String,
+    created_time: LocalDateTime,
+    last_edited_time: LocalDateTime,
+    has_children: Boolean,
+    `type`: BlockType,
+    archived: Boolean,
+    child_database: ChildDatabaseBlock
+)
+case class ChildDatabaseBlock(
+    title: String
+)
+
 val dateTimeFormatter =
   DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 implicit val datetimeDecoder: Decoder[LocalDateTime] =
