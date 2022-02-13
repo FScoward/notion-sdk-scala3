@@ -279,4 +279,69 @@ class BlockObjectSpec extends munit.FunSuite {
     val actual = decode[QuoteBlockObject](json)
     assertEquals(actual, Right(expected))
   }
+
+  test("decode heading_1") {
+    val json = """
+{
+  "object": "block",
+  "id": "a123b6c7-28dc-4af5-ae05-0221356ba7f3",
+  "created_time": "2022-02-13T15:42:00.000Z",
+  "last_edited_time": "2022-02-13T15:42:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "heading_1",
+  "heading_1": {
+    "text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "見出しブロック",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "見出しブロック",
+        "href": null
+      }
+    ]
+  }
+}
+        """
+    val expected = Heading1BlockObject(
+      id = "a123b6c7-28dc-4af5-ae05-0221356ba7f3",
+      created_time = LocalDateTime.parse("2022-02-13T15:42:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-02-13T15:42:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.heading_1,
+      archived = false,
+      heading_1 = Heading1Block(text =
+        Seq(
+          TextBlockContent(
+            text = Text(
+              content = "見出しブロック",
+              link = None
+            ),
+            annotations = NotionAnnotation(
+              false,
+              false,
+              false,
+              false,
+              "default"
+            ),
+            plain_text = "見出しブロック",
+            href = None
+          )
+        )
+      )
+    )
+    val actual = decode[Heading1BlockObject](json)
+    assertEquals(actual, Right(expected))
+  }
 }

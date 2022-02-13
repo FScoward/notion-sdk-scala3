@@ -17,9 +17,9 @@ enum BlockType:
   case column extends BlockType
   case child_page extends BlockType
   case child_database extends BlockType
-  case header_1 extends BlockType
-  case header_2 extends BlockType
-  case header_3 extends BlockType
+  case heading_1 extends BlockType
+  case heading_2 extends BlockType
+  case heading_3 extends BlockType
   case table extends BlockType
 end BlockType
 
