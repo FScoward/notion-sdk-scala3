@@ -321,7 +321,7 @@ class BlockObjectSpec extends munit.FunSuite {
       has_children = false,
       `type` = BlockType.heading_1,
       archived = false,
-      heading_1 = Heading1Block(text =
+      heading_1 = HeadingBlock(text =
         Seq(
           TextBlockContent(
             text = Text(
@@ -342,6 +342,71 @@ class BlockObjectSpec extends munit.FunSuite {
       )
     )
     val actual = decode[Heading1BlockObject](json)
+    assertEquals(actual, Right(expected))
+  }
+
+  test("decode heading_2") {
+    val json = """
+{
+  "object": "block",
+  "id": "15727d46-2ccc-4309-b90f-05ef50036b63",
+  "created_time": "2022-02-14T15:20:00.000Z",
+  "last_edited_time": "2022-02-14T15:20:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "heading_2",
+  "heading_2": {
+    "text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "見出し2ブロック",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "見出し2ブロック",
+        "href": null
+      }
+    ]
+  }
+}
+        """
+    val expected = Heading2BlockObject(
+      id = "15727d46-2ccc-4309-b90f-05ef50036b63",
+      created_time = LocalDateTime.parse("2022-02-14T15:20:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-02-14T15:20:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.heading_2,
+      archived = false,
+      heading_2 = HeadingBlock(text =
+        Seq(
+          TextBlockContent(
+            text = Text(
+              content = "見出し2ブロック",
+              link = None
+            ),
+            annotations = NotionAnnotation(
+              false,
+              false,
+              false,
+              false,
+              "default"
+            ),
+            plain_text = "見出し2ブロック",
+            href = None
+          )
+        )
+      )
+    )
+    val actual = decode[Heading2BlockObject](json)
     assertEquals(actual, Right(expected))
   }
 }
