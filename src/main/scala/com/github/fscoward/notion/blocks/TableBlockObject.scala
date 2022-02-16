@@ -11,9 +11,3 @@ case class TableBlockObject(
     archived: Boolean,
     table: TableBlock
 ) extends BlockObject
-
-case class TableBlock(
-    table_width: Int,
-    has_column_header: Boolean,
-    has_row_header: Boolean
-)
