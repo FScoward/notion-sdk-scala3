@@ -511,4 +511,33 @@ class BlockObjectSpec extends munit.FunSuite {
     assertEquals(actual, Right(expected))
   }
 
+  test("decode divider") {
+    val json = """
+{
+  "object": "block",
+  "id": "0792b859-1de7-4b86-8f68-7be26ad799cd",
+  "created_time": "2022-02-16T16:44:00.000Z",
+  "last_edited_time": "2022-02-16T16:44:00.000Z",
+  "has_children": false,
+  "archived": false,
+  "type": "divider",
+  "divider": {}
+}
+        """
+
+    val actual = decode[DividerBlockObject](json)
+    val expected = DividerBlockObject(
+      id = "0792b859-1de7-4b86-8f68-7be26ad799cd",
+      created_time = LocalDateTime.parse("2022-02-16T16:44:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-02-16T16:44:00.000Z", formatter),
+      has_children = false,
+      `type` = BlockType.divider,
+      archived = false,
+      divider = ()
+    )
+    assertEquals(actual, Right(expected))
+
+  }
+
 }

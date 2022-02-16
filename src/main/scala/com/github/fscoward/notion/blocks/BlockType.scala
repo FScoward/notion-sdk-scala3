@@ -21,6 +21,7 @@ enum BlockType:
   case heading_2 extends BlockType
   case heading_3 extends BlockType
   case table extends BlockType
+  case divider extends BlockType
 end BlockType
 
 implicit val blockTypeDecoder: Decoder[BlockType] =
