@@ -475,4 +475,40 @@ class BlockObjectSpec extends munit.FunSuite {
     assertEquals(actual, Right(expected))
   }
 
+  test("decode table") {
+    val json = """
+{
+  "object": "block",
+  "id": "11155e3f-0ecb-4d3e-925a-35f4f5d18e18",
+  "created_time": "2022-02-16T16:23:00.000Z",
+  "last_edited_time": "2022-02-16T16:23:00.000Z",
+  "has_children": true,
+  "archived": false,
+  "type": "table",
+  "table": {
+    "table_width": 2,
+    "has_column_header": false,
+    "has_row_header": false
+  }
+}
+        """
+
+    val actual = decode[TableBlockObject](json)
+    val expected = TableBlockObject(
+      id = "11155e3f-0ecb-4d3e-925a-35f4f5d18e18",
+      created_time = LocalDateTime.parse("2022-02-16T16:23:00.000Z", formatter),
+      last_edited_time =
+        LocalDateTime.parse("2022-02-16T16:23:00.000Z", formatter),
+      has_children = true,
+      `type` = BlockType.table,
+      archived = false,
+      table = TableBlock(
+        table_width = 2,
+        has_column_header = false,
+        has_row_header = false
+      )
+    )
+    assertEquals(actual, Right(expected))
+  }
+
 }
