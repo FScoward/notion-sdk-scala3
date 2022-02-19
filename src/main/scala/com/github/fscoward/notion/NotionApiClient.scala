@@ -41,10 +41,6 @@ class NotionApiClient {
     get[ListAllUsers](NotionApiUri.User.listAllUsers)
   }
 
-  def listDatabases: ListDatabase = {
-    get[ListDatabase](NotionApiUri.Database.listAlliDatabases)
-  }
-
   def retrieveABlock(blockId: String): BlockObject = {
     import com.github.fscoward.notion.blocks.blockDecoder
     get[TodoBlockObject](NotionApiUri.Block.retrieveABlock(blockId))
