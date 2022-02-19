@@ -1,6 +1,10 @@
 package com.github.fscoward.notion
 
-import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
+import com.github.fscoward.notion.pages.property.Property
+import io.circe.*
+import io.circe.generic.auto.*
+import io.circe.parser.*
+import io.circe.syntax.*
 
 class ListDatabaseSpec extends munit.FunSuite {
   test("decode json") {
@@ -44,11 +48,24 @@ class ListDatabaseSpec extends munit.FunSuite {
     |}
     """.stripMargin
 
-    val expected = ""
+    val expected = ListDatabase(results =
+      Seq(
+        Database(
+          `object` = "database",
+          id = "668d797c-76fa-4934-9b05-ad288df2d136",
+          title = "Grocery list",
+          properties = Map.empty[String, Property]
+        ),
+        Database(
+          `object` = "database",
+          id = "74ba0cb2-732c-4d2f-954a-fcaa0d93a898",
+          title = "Pantry",
+          properties = Map.empty[String, Property]
+        )
+      )
+    )
     val actual = decode[ListDatabase](resultJson)
 
-    assert(actual.isRight)
-    // TODO
-    // assert(actual == expected)
+    assertEquals(actual, Right(expected))
   }
 }

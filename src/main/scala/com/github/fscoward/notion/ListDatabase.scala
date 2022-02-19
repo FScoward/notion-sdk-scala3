@@ -14,18 +14,19 @@ case class Database(
     `object`: String,
     id: String,
     title: String,
-    properties: Map[String, Property]
+    properties: Map[String, Property] // TODO: Propertyは専用のものを使う必要がある
 )
-
-implicit val databaseDecoder: Decoder[Database] = new Decoder[Database] {
-  def apply(c: HCursor): Decoder.Result[Database] = {
-    for {
-      obj <- c.downField("object").as[String]
-      id <- c.downField("id").as[String]
-      title <- c.downField("title").as[String]
-      property <- c.get[Map[String, Property]]("properties")
-    } yield {
-      Database(obj, id, title, property)
-    }
+implicit val databaseDecoder: Decoder[Database] = (c: HCursor) => {
+  for {
+    obj <- c.downField("object").as[String]
+    id <- c.downField("id").as[String]
+    title <- c.downField("title").as[String]
+    property <- c.get[Map[String, Property]]("properties")
+  } yield {
+    println("============================")
+    println(property)
+    println(c.downField("properties").keys)
+    println("============================")
+    Database(obj, id, title, property)
   }
 }
