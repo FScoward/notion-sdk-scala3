@@ -114,7 +114,7 @@ trait RichText extends Property {
   val plain_text: String
   val href: Option[String]
   val annotations: NotionAnnotation
-  val `type`: String // TODO: Enum
+  val `type`: PropertyType = PropertyType.rich_text
 }
 
 case class TitleProperty(
@@ -136,7 +136,6 @@ case class RichTextProperty(
     plain_text: String,
     href: Option[String],
     annotations: NotionAnnotation,
-    `type`: String = "text",
     text: Text
 //    link: URLProperty
 ) extends RichText
