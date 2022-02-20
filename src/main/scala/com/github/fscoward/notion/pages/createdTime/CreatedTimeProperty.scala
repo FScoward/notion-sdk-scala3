@@ -1,9 +1,9 @@
 package com.github.fscoward.notion.pages.createdTime
 
-import com.github.fscoward.notion.pages.property.Property
+import com.github.fscoward.notion.pages.property.{Property, PropertyType}
 
 case class CreatedTimeProperty(
     id: String,
-    `type`: String = "created_time",
+    `type`: PropertyType = PropertyType.created_time,
     created_time: String
 ) extends Property
