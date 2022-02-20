@@ -1,6 +1,7 @@
 package com.github.fscoward.notion.databases.query
 
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
+import com.github.fscoward.notion.pages.createdTime.CreatedTimeProperty
 import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
 import com.github.fscoward.notion.pages.property.{
   Property,
@@ -143,6 +144,10 @@ class QueryADatabaseSpec extends munit.FunSuite {
               "タグ" -> MultiSelectProperty(
                 id = "%5ELA%5E",
                 multi_select = Nil
+              ),
+              "作成日時" -> CreatedTimeProperty(
+                id = "_%5EVR",
+                created_time = "2022-02-17T15:52:00.000Z"
               ),
               "名前" -> TitleProperty(
                 id = "title",

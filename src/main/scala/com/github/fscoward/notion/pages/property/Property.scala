@@ -4,6 +4,7 @@ import cats.data.Validated
 import cats.syntax.functor.*
 import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
+import com.github.fscoward.notion.pages.createdTime.CreatedTimeProperty
 import com.github.fscoward.notion.pages.date.DateProperty
 import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
 import com.github.fscoward.notion.pages.relation.RelationProperty
@@ -28,7 +29,8 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[CheckboxProperty].widen,
     Decoder[MultiSelectProperty].widen,
     Decoder[TitleProperty].widen,
-    Decoder[RelationProperty].widen
+    Decoder[RelationProperty].widen,
+    Decoder[CreatedTimeProperty].widen
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] =
