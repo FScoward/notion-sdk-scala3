@@ -119,7 +119,7 @@ trait RichText extends Property {
 
 case class TitleProperty(
     id: String,
-    `type`: String,
+    `type`: PropertyType = PropertyType.title,
     title: Seq[TitlePropertyValue]
 ) extends Property
 

@@ -151,7 +151,6 @@ class QueryADatabaseSpec extends munit.FunSuite {
               ),
               "名前" -> TitleProperty(
                 id = "title",
-                `type` = "title",
                 title = Seq(
                   TitlePropertyValue(
                     text = Text(content = "backlog item 1", link = None),

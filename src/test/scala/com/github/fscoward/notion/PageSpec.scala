@@ -153,7 +153,6 @@ class PageSpec extends munit.FunSuite {
       properties = Map(
         "Name" -> TitleProperty(
           id = "title",
-          `type` = "title",
           title = Seq(
             TitlePropertyValue(
               `type` = "text",
