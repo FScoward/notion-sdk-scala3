@@ -6,6 +6,7 @@ import com.github.fscoward.notion.pages.annotation.NotionAnnotation
 import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
 import com.github.fscoward.notion.pages.date.DateProperty
 import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
+import com.github.fscoward.notion.pages.relation.RelationProperty
 import com.github.fscoward.notion.pages.select.SelectProperty
 import com.github.fscoward.notion.pages.text.*
 import com.github.fscoward.notion.pages.url.URLProperty
@@ -26,7 +27,8 @@ implicit val propertyDecoder: Decoder[Property] =
     Decoder[URLProperty].widen,
     Decoder[CheckboxProperty].widen,
     Decoder[MultiSelectProperty].widen,
-    Decoder[TitleProperty].widen
+    Decoder[TitleProperty].widen,
+    Decoder[RelationProperty].widen
   ).reduceLeft(_ or _)
 
 implicit def propertiesDecoder: Decoder[Map[String, Property]] =

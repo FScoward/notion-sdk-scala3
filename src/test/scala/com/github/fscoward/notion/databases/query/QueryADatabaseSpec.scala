@@ -8,6 +8,10 @@ import com.github.fscoward.notion.pages.property.{
   TitleProperty,
   TitlePropertyValue
 }
+import com.github.fscoward.notion.pages.relation.{
+  RelationProperty,
+  RelationPropertyValue
+}
 import com.github.fscoward.notion.pages.select.{
   SelectProperty,
   SelectPropertyValue
@@ -126,6 +130,14 @@ class QueryADatabaseSpec extends munit.FunSuite {
                   id = "biin",
                   name = "Backlog",
                   color = "default"
+                )
+              ),
+              "Sprint" -> RelationProperty(
+                id = "G%3EAA",
+                relation = Seq(
+                  RelationPropertyValue(id =
+                    "1e6fa199-6306-4a3d-ae0c-618892849eb3"
+                  )
                 )
               ),
               "タグ" -> MultiSelectProperty(
