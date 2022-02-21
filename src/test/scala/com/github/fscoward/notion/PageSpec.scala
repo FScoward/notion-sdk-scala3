@@ -5,6 +5,7 @@ import com.github.fscoward.notion.pages.checkbox.CheckboxProperty
 import com.github.fscoward.notion.pages.date.{DateProperty, DatePropertyValue}
 import com.github.fscoward.notion.pages.multi_select.MultiSelectProperty
 import com.github.fscoward.notion.pages.property.{
+  PropertyType,
   Text,
   TextObj,
   TitleProperty,
@@ -214,7 +215,7 @@ class PageSpec extends munit.FunSuite {
         ),
         "Publishing/Release Date" -> DateProperty(
           id = "?ex+",
-          `type` = "date",
+          `type` = PropertyType.date,
           DatePropertyValue(
             start = "2018-10-21",
             end = None,
