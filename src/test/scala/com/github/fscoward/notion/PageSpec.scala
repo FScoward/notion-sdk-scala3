@@ -223,7 +223,6 @@ class PageSpec extends munit.FunSuite {
         ),
         "Link" -> URLProperty(
           id = "VVMi",
-          `type` = "url",
           url =
             "https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html"
         ),

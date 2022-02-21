@@ -281,6 +281,7 @@ class DatabaseObjectSpec extends munit.FunSuite {
 }
       """
 
+    import com.github.fscoward.notion.pages.property.propertyTypeDecoder
     val actual = decode[DatabaseObject](resultJson)
     val expected =
       DatabaseObject(
