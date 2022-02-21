@@ -3,7 +3,7 @@ package com.github.fscoward.notion.databases.query
 import com.github.fscoward.notion.Page
 import com.github.fscoward.notion.pageDecoder
 
-case class QueryADatabase(
+case class QueryADatabaseResult(
     `object`: String = "list",
     results: Seq[Page],
     next_cursor: Option[String],

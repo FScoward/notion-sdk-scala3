@@ -111,9 +111,9 @@ class QueryADatabaseSpec extends munit.FunSuite {
         """
 
     import com.github.fscoward.notion.pageDecoder
-    val actual = decode[QueryADatabase](json)
+    val actual = decode[QueryADatabaseResult](json)
     val expected =
-      QueryADatabase(
+      QueryADatabaseResult(
         results = Seq(
           Page(
             `object` = "page",
