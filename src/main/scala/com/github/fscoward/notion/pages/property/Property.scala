@@ -140,10 +140,6 @@ case class RichTextProperty(
 //    link: URLProperty
 ) extends RichText
 
-case class TextObjects(
-    value: Seq[RichTextProperty]
-) extends Property
-
 case class Text(
     content: String,
     link: Option[URLProperty]
