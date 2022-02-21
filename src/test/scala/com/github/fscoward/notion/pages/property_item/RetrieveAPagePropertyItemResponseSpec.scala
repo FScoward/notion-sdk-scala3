@@ -55,7 +55,6 @@ class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
         results = Seq(
           RichText(
             `object` = "property_item",
-            `type` = "rich_text",
             rich_text = RichTextProperty(
               plain_text = "アイウエオ",
               href = None,

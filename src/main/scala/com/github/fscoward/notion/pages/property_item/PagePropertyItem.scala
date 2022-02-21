@@ -6,13 +6,14 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 import cats.syntax.functor.*
-import com.github.fscoward.notion.pages.property.propertyDecoder
+import com.github.fscoward.notion.pages.property.{PropertyType, propertyDecoder}
 
 trait PagePropertyItem {
   val `object`: String
-  val `type`: String
+  val `type`: PropertyType
 }
 
+import com.github.fscoward.notion.pages.property.propertyTypeDecoder
 implicit val pagePropertyItemDecoder: Decoder[PagePropertyItem] =
   List[Decoder[PagePropertyItem]](
     Decoder[RichText].widen
