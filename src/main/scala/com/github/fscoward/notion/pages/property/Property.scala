@@ -149,3 +149,7 @@ case class TextObj(
     content: String,
     link: Option[LinkObj]
 )
+case class LinkObj(
+    `type`: String = "url",
+    url: String
+)
