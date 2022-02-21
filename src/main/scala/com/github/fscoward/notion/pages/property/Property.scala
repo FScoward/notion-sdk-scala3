@@ -149,5 +149,3 @@ case class TextObj(
     content: String,
     link: Option[LinkObj]
 )
-
-case class File(name: String)
