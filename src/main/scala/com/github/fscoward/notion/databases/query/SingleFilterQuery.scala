@@ -19,6 +19,7 @@ import com.github.fscoward.notion.databases.query.filter.text.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.number.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.select.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.date.conditionEncoder
+
 implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case textFilter: TextFilter               => textFilter.asJson
   case numberFilter: NumberFilter           => numberFilter.asJson
@@ -26,8 +27,8 @@ implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case selectFilter: SelectFilter           => selectFilter.asJson
   case multiSelectFilter: MultiSelectFilter => multiSelectFilter.asJson
   case dateFilter: DateFilter               => dateFilter.asJson
-  // people
-  // files
-  // relation
-  // formula
+  // TODO: people
+  // TODO: files
+  // TODO: relation
+  // TODO: formula
 }
