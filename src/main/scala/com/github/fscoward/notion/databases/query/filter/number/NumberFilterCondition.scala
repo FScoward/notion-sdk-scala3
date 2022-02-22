@@ -10,6 +10,12 @@ trait NumberFilterCondition
 case class EqualsCondition(equals: Int) extends NumberFilterCondition
 case class DoesNotEqualCondition(does_not_equal: Int)
     extends NumberFilterCondition
+case class GreaterThanCondition(greater_than: Int) extends NumberFilterCondition
+case class LessThanCondition(less_than: Int) extends NumberFilterCondition
+case class GreaterThanEqualToCondition(greater_than_or_equal_to: Int)
+    extends NumberFilterCondition
+case class LessThanEqualToCondition(less_than_or_equal_to: Int)
+    extends NumberFilterCondition
 case class IsEmptyCondition(is_empty: Boolean = true)
     extends NumberFilterCondition {
   require(is_empty)
