@@ -2,7 +2,7 @@ package com.github.fscoward.notion.databases.query
 
 import io.circe.{Encoder, Json}
 
-case class CheckboxQuery(
+case class CheckboxFilterCondition(
     propertyName: String,
     property: CheckboxPropertyType,
     value: Boolean
@@ -10,8 +10,8 @@ case class CheckboxQuery(
   val queryType: String = "checkbox"
 }
 
-implicit val checkboxEncoder: Encoder[CheckboxQuery] =
-  (checkboxQuery: CheckboxQuery) => {
+implicit val checkboxEncoder: Encoder[CheckboxFilterCondition] =
+  (checkboxQuery: CheckboxFilterCondition) => {
     Json.obj(
       ("property", Json.fromString(checkboxQuery.propertyName)),
       (
