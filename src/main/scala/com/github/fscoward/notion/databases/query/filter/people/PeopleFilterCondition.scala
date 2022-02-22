@@ -1,6 +1,10 @@
 package com.github.fscoward.notion.databases.query.filter.people
 
+import io.circe.Encoder
+
 import java.util.UUID
+import io.circe.generic.auto.*
+import io.circe.syntax.*
 
 trait PeopleFilterCondition
 
@@ -19,3 +23,13 @@ case class IsNotEmptyCondition(is_not_empty: Boolean = true)
     extends PeopleFilterCondition {
   require(is_not_empty)
 }
+
+implicit val conditionEncoder: Encoder[PeopleFilterCondition] =
+  Encoder.instance {
+    case containsCondition: ContainsCondition =>
+      containsCondition.asJson
+    case doesNotContainsCondition: DoesNotContainsCondition =>
+      doesNotContainsCondition.asJson
+    case isEmptyCondition: IsEmptyCondition       => isEmptyCondition.asJson
+    case isNotEmptyCondition: IsNotEmptyCondition => isNotEmptyCondition.asJson
+  }
