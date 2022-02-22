@@ -1,15 +1,14 @@
-package com.github.fscoward.notion.databases.query
+package com.github.fscoward.notion.databases.query.filter.checkbox
 
-import com.github.fscoward.notion.databases.query.filterCondition.CheckboxFilterCondition
 import io.circe.*
 import io.circe.generic.auto.*
-import io.circe.syntax.*
 import io.circe.parser.*
+import io.circe.syntax.*
 
 class CheckboxFilterConditionSpec extends munit.FunSuite {
   test("encode CheckboxFilterCondition to json") {
-    val query: CheckboxFilterCondition =
-      filterCondition.CheckboxFilterCondition(
+    val query: CheckboxFilter =
+      CheckboxFilter(
         property = "Done",
         checkbox = EqualsCondition(equals = true)
       )

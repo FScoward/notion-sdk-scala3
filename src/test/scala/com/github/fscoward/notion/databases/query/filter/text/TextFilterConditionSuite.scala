@@ -1,16 +1,15 @@
-package com.github.fscoward.notion.databases.query
+package com.github.fscoward.notion.databases.query.filter.text
 
-import com.github.fscoward.notion.databases.query.filterCondition.TextFilterCondition
-import munit.FunSuite
 import io.circe.*
 import io.circe.generic.auto.*
-import io.circe.syntax.*
 import io.circe.parser.*
+import io.circe.syntax.*
+import munit.FunSuite
 
-class TextFilterConditionSpec extends FunSuite {
+class TextFilterConditionSuite extends FunSuite {
   test("encode TextFilterCondition to json") {
     val filterCondition =
-      TextFilterCondition(
+      TextFilter(
         property = "Landmark",
         text = ContainsCondition("Bridge")
       )

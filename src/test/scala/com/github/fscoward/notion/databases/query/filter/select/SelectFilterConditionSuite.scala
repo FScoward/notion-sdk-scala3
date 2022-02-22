@@ -1,15 +1,14 @@
-package com.github.fscoward.notion.databases.query
+package com.github.fscoward.notion.databases.query.filter.select
 
-import com.github.fscoward.notion.databases.query.filterCondition.SelectFilterCondition
-import munit.FunSuite
 import io.circe.*
 import io.circe.generic.auto.*
-import io.circe.syntax.*
 import io.circe.parser.*
+import io.circe.syntax.*
+import munit.FunSuite
 
-class SelectFilterConditionSpec extends FunSuite {
+class SelectFilterConditionSuite extends FunSuite {
   test("encode SelectFilterCondition to json") {
-    val selectFilterCondition = SelectFilterCondition(
+    val selectFilterCondition = SelectFilter(
       property = "Status",
       select = IsNotEmptyCondition()
     )
