@@ -6,7 +6,7 @@ case class CheckboxFilterCondition(
     propertyName: String,
     property: CheckboxPropertyType,
     value: Boolean
-) extends Query {
+) extends FilterCondition {
   val queryType: String = "checkbox"
 }
 
