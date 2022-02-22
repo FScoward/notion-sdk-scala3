@@ -23,4 +23,9 @@ implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case checkboxFilter: CheckboxFilter       => checkboxFilter.asJson
   case selectFilter: SelectFilter           => selectFilter.asJson
   case multiSelectFilter: MultiSelectFilter => multiSelectFilter.asJson
+  // date
+  // people
+  // files
+  // relation
+  // formula
 }
