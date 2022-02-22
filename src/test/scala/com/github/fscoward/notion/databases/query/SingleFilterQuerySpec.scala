@@ -5,7 +5,7 @@ import io.circe._, io.circe.generic.auto._, io.circe.syntax._, io.circe.parser._
 class SingleFilterQuerySpec extends munit.FunSuite {
   test("encode Single Filter Query with Checkbox to json") {
     val singleFilter = SingleFilterQuery(filter =
-      CheckboxQuery(
+      CheckboxFilterCondition(
         propertyName = "Seen",
         CheckboxPropertyType.equals,
         value = false
