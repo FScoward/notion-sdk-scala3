@@ -7,15 +7,9 @@ import io.circe.syntax.*
 
 trait NumberFilterCondition
 
-case class EqualsCondition(equals: Boolean) extends NumberFilterCondition
-case class DoesNotEqualCondition(does_not_equal: Boolean)
+case class EqualsCondition(equals: Int) extends NumberFilterCondition
+case class DoesNotEqualCondition(does_not_equal: Int)
     extends NumberFilterCondition
-case class ContainsCondition(contains: String) extends NumberFilterCondition
-case class DoesNotContainCondition(does_not_contain: String)
-    extends NumberFilterCondition
-case class StartsWithCondition(starts_with: String)
-    extends NumberFilterCondition
-case class EndsWithCondition(ends_with: String) extends NumberFilterCondition
 case class IsEmptyCondition(is_empty: Boolean = true)
     extends NumberFilterCondition {
   require(is_empty)
@@ -30,12 +24,6 @@ implicit val conditionEncoder: Encoder[NumberFilterCondition] =
     case equalsCondition @ EqualsCondition(_) => equalsCondition.asJson
     case doesNotEqualCondition @ DoesNotEqualCondition(_) =>
       doesNotEqualCondition.asJson
-    case containsCondition @ ContainsCondition(_) => containsCondition.asJson
-    case doesNotContainCondition @ DoesNotContainCondition(_) =>
-      doesNotContainCondition.asJson
-    case startWithCondition @ StartsWithCondition(_) =>
-      startWithCondition.asJson
-    case endsWithCondition @ EndsWithCondition(_) => endsWithCondition.asJson
     case isEmptyCondition @ IsEmptyCondition(_) =>
       Json.obj(("is_empty", Json.fromBoolean(true)))
     case isNotEmptyCondition @ IsNotEmptyCondition(_) =>
