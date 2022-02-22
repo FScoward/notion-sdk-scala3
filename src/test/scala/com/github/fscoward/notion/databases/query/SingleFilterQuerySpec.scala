@@ -6,9 +6,8 @@ class SingleFilterQuerySpec extends munit.FunSuite {
   test("encode Single Filter Query with Checkbox to json") {
     val singleFilter = SingleFilterQuery(filter =
       CheckboxFilterCondition(
-        propertyName = "Seen",
-        CheckboxPropertyType.equals,
-        value = false
+        property = "Seen",
+        checkbox = EqualsCondition(false)
       )
     )
     val expected = parse("""
