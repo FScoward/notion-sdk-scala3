@@ -1,6 +1,10 @@
 package com.github.fscoward.notion.databases.query
 
-import io.circe._, io.circe.generic.auto._, io.circe.syntax._, io.circe.parser._
+import com.github.fscoward.notion.databases.query.filterCondition.CheckboxFilterCondition
+import io.circe.*
+import io.circe.generic.auto.*
+import io.circe.syntax.*
+import io.circe.parser.*
 
 class SingleFilterQuerySpec extends munit.FunSuite {
   test("encode Single Filter Query with Checkbox to json") {

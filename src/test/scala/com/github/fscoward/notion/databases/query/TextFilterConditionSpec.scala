@@ -1,7 +1,11 @@
 package com.github.fscoward.notion.databases.query
 
+import com.github.fscoward.notion.databases.query.filterCondition.TextFilterCondition
 import munit.FunSuite
-import io.circe._, io.circe.generic.auto._, io.circe.syntax._, io.circe.parser._
+import io.circe.*
+import io.circe.generic.auto.*
+import io.circe.syntax.*
+import io.circe.parser.*
 
 class TextFilterConditionSpec extends FunSuite {
   test("encode TextFilterCondition to json") {
