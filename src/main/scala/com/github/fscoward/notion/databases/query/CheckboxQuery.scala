@@ -6,7 +6,7 @@ case class CheckboxQuery(
     propertyName: String,
     property: CheckboxPropertyType,
     value: Boolean
-) {
+) extends Query {
   val queryType: String = "checkbox"
 }
 
