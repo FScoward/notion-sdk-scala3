@@ -14,7 +14,7 @@ import com.github.fscoward.notion.pages.property_item.{
   RichText
 }
 
-class RetrieveAPagePropertyItemResponseSpec extends munit.FunSuite {
+class RetrieveAPagePropertyItemResponseSuite extends munit.FunSuite {
   test("decode json") {
     val json =
       """

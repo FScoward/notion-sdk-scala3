@@ -10,7 +10,7 @@ import io.circe.syntax.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class BlockObjectSpec extends munit.FunSuite {
+class BlockObjectSuite extends munit.FunSuite {
 
   val formatter: DateTimeFormatter =
     DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")

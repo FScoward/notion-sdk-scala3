@@ -12,7 +12,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 
-class PagePropertySpec extends munit.FunSuite {
+class PagePropertySuite extends munit.FunSuite {
   test("encode page property") {
 
     val p = PageProperty(

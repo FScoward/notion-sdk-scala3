@@ -23,7 +23,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 
-class PageSpec extends munit.FunSuite {
+class PageSuite extends munit.FunSuite {
   test("decode Json") {
     val resultJson =
       """

@@ -8,7 +8,7 @@ import io.circe.generic.auto.*
 import io.circe.parser.*
 import io.circe.syntax.*
 
-class DatabaseObjectSpec extends munit.FunSuite {
+class DatabaseObjectSuite extends munit.FunSuite {
   test("decode json") {
     val resultJson =
       """

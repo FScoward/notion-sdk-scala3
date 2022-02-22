@@ -4,7 +4,7 @@ import io.circe._, io.circe.parser._
 import io.circe.Encoder, io.circe.syntax._
 import io.circe.generic.auto._
 
-class DatabasePropertySpec extends munit.FunSuite {
+class DatabasePropertySuite extends munit.FunSuite {
   test("create database property") {
     val actual = Database(
       parent = Parent("b24dcaf87a2140d0a1d85b393cd2019b"),

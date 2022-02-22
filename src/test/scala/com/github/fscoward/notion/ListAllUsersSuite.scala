@@ -3,7 +3,7 @@ package com.github.fscoward.notion
 import io.circe._, io.circe.generic.auto._, io.circe.parser._, io.circe.syntax._
 import com.github.fscoward.notion.users._
 
-class ListAllUsersSpec extends munit.FunSuite {
+class ListAllUsersSuite extends munit.FunSuite {
   test("docode json") {
     val resultJson = """
     |  {
