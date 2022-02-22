@@ -21,4 +21,10 @@ class DateFilterConditionSuite extends FunSuite {
         """).getOrElse(Json.Null)
     assertEquals(actual, expected)
   }
+
+  test("encode DateFilterCondition to json") {
+    val actual = PastWeek(past_week = ()).asJson
+    val expected = parse("""{"past_week": {}}""").getOrElse(Json.Null)
+    assertEquals(actual, expected)
+  }
 }
