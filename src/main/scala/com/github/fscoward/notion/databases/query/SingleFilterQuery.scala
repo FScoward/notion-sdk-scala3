@@ -1,8 +1,18 @@
 package com.github.fscoward.notion.databases.query
 
+import com.github.fscoward.notion.databases.query.filter.Filter
 import com.github.fscoward.notion.databases.query.filter.checkbox.CheckboxFilter
-import io.circe.Encoder
+import com.github.fscoward.notion.databases.query.filter.text.TextFilter
 import io.circe.*
-import io.circe.generic.semiauto.*
+import io.circe.generic.auto.*
+import io.circe.parser.*
+import io.circe.syntax.*
 
-case class SingleFilterQuery(filter: CheckboxFilter)
+case class SingleFilterQuery(filter: Filter)
+
+import com.github.fscoward.notion.databases.query.filter.checkbox.conditionEncoder
+import com.github.fscoward.notion.databases.query.filter.text.conditionEncoder
+implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
+  case textFilter: TextFilter         => textFilter.asJson
+  case checkboxFilter: CheckboxFilter => checkboxFilter.asJson
+}
