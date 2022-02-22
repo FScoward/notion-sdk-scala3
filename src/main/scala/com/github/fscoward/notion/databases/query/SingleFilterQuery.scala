@@ -5,6 +5,7 @@ import com.github.fscoward.notion.databases.query.filter.checkbox.CheckboxFilter
 import com.github.fscoward.notion.databases.query.filter.number.NumberFilter
 import com.github.fscoward.notion.databases.query.filter.select.SelectFilter
 import com.github.fscoward.notion.databases.query.filter.text.TextFilter
+import com.github.fscoward.notion.databases.query.filter.multiSelect.MultiSelectFilter
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
@@ -17,8 +18,9 @@ import com.github.fscoward.notion.databases.query.filter.text.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.number.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.select.conditionEncoder
 implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
-  case textFilter: TextFilter         => textFilter.asJson
-  case numberFilter: NumberFilter     => numberFilter.asJson
-  case checkboxFilter: CheckboxFilter => checkboxFilter.asJson
-  case selectFilter: SelectFilter     => selectFilter.asJson
+  case textFilter: TextFilter               => textFilter.asJson
+  case numberFilter: NumberFilter           => numberFilter.asJson
+  case checkboxFilter: CheckboxFilter       => checkboxFilter.asJson
+  case selectFilter: SelectFilter           => selectFilter.asJson
+  case multiSelectFilter: MultiSelectFilter => multiSelectFilter.asJson
 }
