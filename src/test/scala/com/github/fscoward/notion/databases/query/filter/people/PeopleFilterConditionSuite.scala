@@ -23,4 +23,16 @@ class PeopleFilterConditionSuite extends FunSuite {
       parse(s"""{"does_not_contain": "$uuid"}""").getOrElse(Json.Null)
     assertEquals(actual, expected)
   }
+  test("is empty contains") {
+    val actual = IsEmptyCondition().asJson
+    val expected =
+      parse(s"""{"is_empty": true}""").getOrElse(Json.Null)
+    assertEquals(actual, expected)
+  }
+  test("is not empty contains") {
+    val actual = IsNotEmptyCondition().asJson
+    val expected =
+      parse(s"""{"is_not_empty": true}""").getOrElse(Json.Null)
+    assertEquals(actual, expected)
+  }
 }
