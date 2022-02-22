@@ -10,8 +10,12 @@ case class ContainsCondition(contains: String) extends Condition
 case class DoesNotContainCondition(does_not_contain: String) extends Condition
 case class StartsWithCondition(starts_with: String) extends Condition
 case class EndsWithCondition(ends_with: String) extends Condition
-case class IsEmptyCondition(is_empty: Boolean = true) extends Condition
-case class IsNotEmptyCondition() extends Condition
+case class IsEmptyCondition(is_empty: Boolean = true) extends Condition {
+  require(is_empty)
+}
+case class IsNotEmptyCondition(is_not_empty: Boolean = true) extends Condition {
+  require(is_not_empty)
+}
 
 implicit val conditionEncoder: Encoder[Condition] = Encoder.instance {
   case equalsCondition @ EqualsCondition(_) => equalsCondition.asJson
@@ -24,6 +28,6 @@ implicit val conditionEncoder: Encoder[Condition] = Encoder.instance {
   case endsWithCondition @ EndsWithCondition(_)    => endsWithCondition.asJson
   case isEmptyCondition @ IsEmptyCondition(_) =>
     Json.obj(("is_empty", Json.fromBoolean(true)))
-  case isNotEmptyCondition @ IsNotEmptyCondition() =>
+  case isNotEmptyCondition @ IsNotEmptyCondition(_) =>
     Json.obj(("is_not_empty", Json.fromBoolean(true)))
 }
