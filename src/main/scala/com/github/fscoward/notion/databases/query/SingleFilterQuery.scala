@@ -4,6 +4,7 @@ import com.github.fscoward.notion.databases.query.filter.Filter
 import com.github.fscoward.notion.databases.query.filter.checkbox.CheckboxFilter
 import com.github.fscoward.notion.databases.query.filter.date.DateFilter
 import com.github.fscoward.notion.databases.query.filter.file.FileFilter
+import com.github.fscoward.notion.databases.query.filter.formula.FormulaFilter
 import com.github.fscoward.notion.databases.query.filter.number.NumberFilter
 import com.github.fscoward.notion.databases.query.filter.select.SelectFilter
 import com.github.fscoward.notion.databases.query.filter.text.TextFilter
@@ -25,7 +26,7 @@ import com.github.fscoward.notion.databases.query.filter.date.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.people.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.file.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.relation.conditionEncoder
-// TODO: formula
+import com.github.fscoward.notion.databases.query.filter.formula.filterEncoder
 
 implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case textFilter: TextFilter               => textFilter.asJson
@@ -37,5 +38,5 @@ implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case peopleFilter: PeopleFilter           => peopleFilter.asJson
   case fileFilter: FileFilter               => fileFilter.asJson
   case relationFilter: RelationFilter       => relationFilter.asJson
-  // TODO: formula
+  case formulaFilter: FormulaFilter         => formulaFilter.asJson
 }
