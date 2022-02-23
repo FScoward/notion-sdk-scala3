@@ -32,22 +32,47 @@ case class NextYear(next_year: Unit) extends DateFilterCondition
 implicit val conditionEncoder: Encoder[DateFilterCondition] =
   Encoder.instance {
     case equalsCondition @ EqualsCondition(equals) =>
-      Json.fromString(equals.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+      Json.obj(
+        (
+          "equals",
+          Json.fromString(equals.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+        )
+      )
     case beforeCondition @ BeforeCondition(before) =>
-      Json.fromString(before.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+      Json.obj(
+        (
+          "before",
+          Json.fromString(before.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+        )
+      )
     case afterCondition @ AfterCondition(after) =>
-      Json.fromString(after.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+      Json.obj(
+        (
+          "after",
+          Json.fromString(after.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+        )
+      )
     case onOrBeforeCondition @ OnOrBeforeCondition(on_or_before) =>
-      Json.fromString(
-        on_or_before.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+      Json.obj(
+        (
+          "on_or_before",
+          Json.fromString(
+            on_or_before.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+          )
+        )
       )
     case isEmptyCondition @ IsEmptyCondition(_) =>
       Json.obj(("is_empty", Json.fromBoolean(true)))
     case isNotEmptyCondition @ IsNotEmptyCondition(_) =>
       Json.obj(("is_not_empty", Json.fromBoolean(true)))
     case onOrAfterCondition @ OnOrAfterCondition(on_or_after) =>
-      Json.fromString(
-        on_or_after.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+      Json.obj(
+        (
+          "on_or_after",
+          Json.fromString(
+            on_or_after.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+          )
+        )
       )
     case pastWeek @ PastWeek(_)   => Json.obj(("past_week", Json.obj()))
     case pastMonth @ PastMonth(_) => Json.obj(("past_month", Json.obj()))
