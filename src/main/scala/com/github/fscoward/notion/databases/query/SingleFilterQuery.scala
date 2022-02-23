@@ -9,6 +9,7 @@ import com.github.fscoward.notion.databases.query.filter.select.SelectFilter
 import com.github.fscoward.notion.databases.query.filter.text.TextFilter
 import com.github.fscoward.notion.databases.query.filter.multiSelect.MultiSelectFilter
 import com.github.fscoward.notion.databases.query.filter.people.PeopleFilter
+import com.github.fscoward.notion.databases.query.filter.relation.RelationFilter
 import io.circe.*
 import io.circe.generic.auto.*
 import io.circe.parser.*
@@ -23,7 +24,7 @@ import com.github.fscoward.notion.databases.query.filter.select.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.date.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.people.conditionEncoder
 import com.github.fscoward.notion.databases.query.filter.file.conditionEncoder
-// TODO: relation
+import com.github.fscoward.notion.databases.query.filter.relation.conditionEncoder
 // TODO: formula
 
 implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
@@ -35,6 +36,6 @@ implicit val filterEncoder: Encoder[Filter] = Encoder.instance {
   case dateFilter: DateFilter               => dateFilter.asJson
   case peopleFilter: PeopleFilter           => peopleFilter.asJson
   case fileFilter: FileFilter               => fileFilter.asJson
-  // TODO: relation
+  case relationFilter: RelationFilter       => relationFilter.asJson
   // TODO: formula
 }
