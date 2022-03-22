@@ -7,8 +7,8 @@ lazy val root = project
     version := "0.1.0",
     scalaVersion := scala3Version,
     libraryDependencies ++= Seq(
-      "com.novocode" % "junit-interface" % "0.11" % "test",
       "com.softwaremill.sttp.client3" %% "core" % "3.5.1",
+      "com.github.sbt" % "junit-interface" % "0.13.3" % "test",
       "io.circe" %% "circe-core" % "0.14.1",
       "com.softwaremill.sttp.client3" %% "circe" % "3.5.1",
       "io.circe" %% "circe-generic" % "0.14.1",
