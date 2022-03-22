@@ -16,4 +16,4 @@ jobs:
         with:
           github-token: ${{ secrets.REPO_GITHUB_TOKEN }}
           author-email: endlick@gmail.com
-          author-name: fscoward
+          author-name: FScoward
